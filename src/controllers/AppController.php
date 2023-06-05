@@ -1,5 +1,7 @@
 <?php
     class AppController {
+        protected $database;
+
         private $request;
 
         public function __construct() {

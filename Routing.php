@@ -2,7 +2,6 @@
   require_once 'src/controllers/LoginController.php';
   require_once 'src/controllers/RegisterController.php';
   require_once 'src/controllers/ForgotPasswordController.php';
-  require_once 'src/controllers/SecurityController.php';
 
   class Router {
     public static $routes;

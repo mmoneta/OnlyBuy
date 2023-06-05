@@ -14,8 +14,7 @@ document.getElementById('login__action-button').addEventListener('click', () => 
 
     postData('login', {
         username: document.getElementById('username').value,
-        email: document.getElementById('email').value,
-        password: document.getElementById('password').value,
+        password: document.getElementById('password').value
     }).then((data) => {
         document.getElementById('login__action-button').disabled = false;
     });

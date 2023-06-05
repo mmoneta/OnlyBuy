@@ -3,15 +3,24 @@
         private $username;
         private $email;
         private $password;
+        private $role;
+        private $createdDate;
+        private $modifiedDate;
 
         public function __construct(
             string $username,
             string $email,
-            string $password
+            string $password,
+            string $role,
+            string $createdDate,
+            string $modifiedDate
         ) {
             $this->username = $username;
             $this->email = $email;
             $this->password = $password;
+            $this->role = $role;
+            $this->createdDate = $createdDate;
+            $this->modifiedDate = $modifiedDate;
         }
 
         public function getUsername(): string {

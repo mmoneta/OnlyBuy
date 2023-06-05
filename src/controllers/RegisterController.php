@@ -10,7 +10,5 @@
             if ($this->isGet()) {
                 return $this->render('register');
             }
-
-            echo('ss');
         }
     }

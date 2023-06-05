@@ -1,5 +1,4 @@
 <?php
-    require __DIR__.'/src/database/Database.php';
     require 'Routing.php';
 
     $path = trim($_SERVER['REQUEST_URI'], '/');
