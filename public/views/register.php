@@ -7,7 +7,8 @@
         <link rel="stylesheet" type="text/css" href="public/css/register.css">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <script src="public/js/post-data.js" defer></script>
+        <script src="public/js/debounce.js" defer></script>
+        <script src="public/js/main.js" defer></script>
         <script src="public/js/register.js" defer></script>
         <title>Only Buy</title>
     </head>
@@ -15,7 +16,7 @@
     <body>
         <div class="container">
             <div class="row register__content">
-                <div class="col-md-9 col-md-offset-3">
+                <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 col-12">
                     <header class="col-md-12">
                         <h1>Register</h1>
                     </header>
@@ -24,33 +25,33 @@
                         <div>
                             <label for="username">
                                 Username
-                                <input id="username" name="username" type="text" placeholder="Enter username" />
+                                <input id="username" minlength="5" name="username" type="text" placeholder="Enter username" required />
                             </label>
                         </div>
 
                         <div>
                             <label for="email">
                                 E-mail
-                                <input id="email" name="email" type="password" placeholder="Enter e-mail" />
+                                <input id="email" name="email" type="email" placeholder="Enter e-mail" required />
                             </label>
                         </div>
 
                         <div>
                             <label for="password">
                                 Password
-                                <input id="password" name="password" type="password" placeholder="Enter password" />
+                                <input id="password" minlength="6" name="password" type="password" placeholder="Enter password" required />
                             </label>
                         </div>
 
                         <div>
                             <label for="repeat-password">
                                 Repeat password
-                                <input id="repeat-password" name="password" type="password" placeholder="Repeat password" />
+                                <input id="repeat-password" minlength="6" name="password" type="password" placeholder="Repeat password" required />
                             </label>
                         </div>
                         
                         <div>
-                            <button class="btn btn-primary" id="register__action-button" type="button">Register</button>
+                            <button class="btn btn-primary" id="register__action-button" type="button" disabled>Register</button>
                         </div>
                     </form>
                 </div>

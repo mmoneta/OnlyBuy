@@ -7,6 +7,10 @@
         }
 
         public function register() {
-            echo 'ss';
+            if ($this->isGet()) {
+                return $this->render('register');
+            }
+
+            echo('ss');
         }
     }

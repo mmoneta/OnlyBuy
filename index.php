@@ -1,4 +1,5 @@
 <?php
+    require __DIR__.'/src/database/Database.php';
     require 'Routing.php';
 
     $path = trim($_SERVER['REQUEST_URI'], '/');
@@ -7,7 +8,8 @@
     Router::get('', 'LoginController');
     Router::get('login', 'LoginController');
     Router::get('register', 'RegisterController');
+    Router::get('forgot-password', 'ForgotPasswordController');
     Router::post('login', 'LoginController');
-    Router::post('registers', 'RegisterController');
+    Router::post('register', 'RegisterController');
 
     Router::run($path);

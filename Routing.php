@@ -1,6 +1,7 @@
 <?php
   require_once 'src/controllers/LoginController.php';
   require_once 'src/controllers/RegisterController.php';
+  require_once 'src/controllers/ForgotPasswordController.php';
   require_once 'src/controllers/SecurityController.php';
 
   class Router {
@@ -20,9 +21,6 @@
       if (!array_key_exists($action, self::$routes)) {
         die("Wrong url!");
       }
-
-      
-      var_dump(self::$routes);
 
       $controller = self::$routes[$action];
       $object = new $controller;

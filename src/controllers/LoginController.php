@@ -7,6 +7,10 @@
         }
 
         public function login() {
-            echo 'ss';
+            if ($this->isGet()) {
+                $this->render('login');
+            }
+
+            return 'ss';
         }
     }
