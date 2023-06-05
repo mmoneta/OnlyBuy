@@ -17,10 +17,9 @@ document.getElementById('login__action-button').addEventListener('click', () => 
         password: document.getElementById('password').value
     }).then(message => {
         document.getElementById('login__action-button').disabled = false;
-        console.log(message);
 
         if (message) {
-            
+            window.location.replace(window.location.origin);
         }
     });
 });

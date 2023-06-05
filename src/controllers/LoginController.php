@@ -5,7 +5,7 @@
     class LoginController extends AppController {
         public function index() {
             session_start();
-            
+
             if (!$_SESSION['user']) {
                 return $this->render('login');
             }
@@ -33,6 +33,6 @@
 
             session_start();
             $_SESSION["user"] = $user;
-            echo json_encode(session_id());
+            echo json_encode(true);
         }
     }
