@@ -2,7 +2,6 @@
     class User {
         private $username;
         private $email;
-        private $password;
         private $role;
         private $createdDate;
         private $modifiedDate;
@@ -10,14 +9,12 @@
         public function __construct(
             string $username,
             string $email,
-            string $password,
             string $role,
             string $createdDate,
             string $modifiedDate
         ) {
             $this->username = $username;
             $this->email = $email;
-            $this->password = $password;
             $this->role = $role;
             $this->createdDate = $createdDate;
             $this->modifiedDate = $modifiedDate;
@@ -31,7 +28,15 @@
             return $this->email;
         }
 
-        public function getPassword(): string {
-            return $this->password;
+        public function getRole(): string {
+            return $this->role;
+        }
+
+        public function getCreatedDate(): string {
+            return $this->createdDate;
+        }
+
+        public function getModifiedDate(): string {
+            return $this->modifiedDate;
         }
     }

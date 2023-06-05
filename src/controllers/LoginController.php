@@ -4,12 +4,19 @@
 
     class LoginController extends AppController {
         public function index() {
-            $this->render('login');
+            session_start();
+            
+            if (!$_SESSION['user']) {
+                return $this->render('login');
+            }
+
+            $url = "http://$_SERVER[HTTP_HOST]";
+            header("Location: {$url}");
         }
 
         public function login() {
             if ($this->isGet()) {
-                return $this->render('login');
+                self::index();
             }
 
             $json = file_get_contents('php://input');
@@ -18,13 +25,14 @@
             $data = json_decode($json);
 
             $user = $userRepository->getUser($data->username, $data->password);
-            echo($user);
 
             if (!$user) {
-                return $this->render('login', ['messages' => ['User not found!']]);
+                echo json_encode(false);
+                return;
             }
 
-            $url = "http://$_SERVER[HTTP_HOST]";
-            header("Location: {$url}/register");
+            session_start();
+            $_SESSION["user"] = $user;
+            echo json_encode(session_id());
         }
     }

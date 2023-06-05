@@ -7,7 +7,7 @@ function changeDisabledStatus() {
         controlNames
             .map(controlName => document.getElementById(controlName).validity.valid)
             .some(valid => !valid)
-        && document.getElementById('password').value !== document.getElementById('repeat-password').value;
+        || document.getElementById('password').value !== document.getElementById('repeat-password').value;
 }
 
 document.getElementById('register__action-button').addEventListener('click', () => {
@@ -17,8 +17,14 @@ document.getElementById('register__action-button').addEventListener('click', () 
         username: document.getElementById('username').value,
         email: document.getElementById('email').value,
         password: document.getElementById('password').value,
-    }).then((data) => {
+    }).then(message => {
         document.getElementById('register__action-button').disabled = false;
+
+        if (message) {
+            window.location.replace(
+                window.location.origin + "/login"
+            );
+        }
     });
 });
 

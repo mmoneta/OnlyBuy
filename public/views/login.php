@@ -44,6 +44,16 @@
                     <div class="col-sm-12">
                         <a class="login__forgot-password" href="forgot-password">Forgot password?</a>
                     </div>
+
+                    <div class="col-sm-12 messages">
+                        <?php
+                            if (isset($messages)) {
+                                foreach ($messages as $message) {
+                                    echo $message;
+                                }
+                            }
+                        ?>
+                    </div>
                 </div>
             </div>
         </div>

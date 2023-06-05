@@ -4,7 +4,7 @@
     $path = trim($_SERVER['REQUEST_URI'], '/');
     $path = parse_url($path, PHP_URL_PATH);
 
-    Router::get('', 'LoginController');
+    Router::get('', 'DashboardController');
     Router::get('login', 'LoginController');
     Router::get('register', 'RegisterController');
     Router::get('forgot-password', 'ForgotPasswordController');

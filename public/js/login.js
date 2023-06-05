@@ -15,8 +15,13 @@ document.getElementById('login__action-button').addEventListener('click', () => 
     postData('login', {
         username: document.getElementById('username').value,
         password: document.getElementById('password').value
-    }).then((data) => {
+    }).then(message => {
         document.getElementById('login__action-button').disabled = false;
+        console.log(message);
+
+        if (message) {
+            
+        }
     });
 });
 
