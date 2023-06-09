@@ -1,5 +1,45 @@
+.container {
+    min-height: 100vh;
+}
+
+.dashboard__menu {
+    align-items: center;
+    display: flex;
+    margin: 48px 0 !important;
+}
+
+label {
+    display: inline-flex;
+}
+
+label > input[type="checkbox"] {
+    height: 20px;
+    width: 20px;
+}
+
+label > span {
+    margin: 4px 8px 0;
+}
+
+label > input[type="checkbox"], input[type="search"] {
+    border: 1px solid #E0E2EA !important;
+    border-radius: 8px;
+}
+
+input[type="search"] {
+    color: #333333 !important;
+    max-width: 392px;
+    padding: 16px;
+    width: 100%;
+}
+
 .dashboard__content {
-    display: flex; 
-    height: 100vh;
-    margin-top: 48px;
+    background-color: #F5F5F5;
+    height: max-content;
+}
+
+.dashboard__menu-checkboxes {
+    display: grid;
+    grid-auto-flow: column;
+    grid-gap: 20px;
 }

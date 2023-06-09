@@ -1,4 +1,4 @@
-include('public/js/post-data.js');
+include('public/js/send-data.js');
 
 const controlNames = ['username', 'password'];
 
@@ -12,10 +12,10 @@ function changeDisabledStatus() {
 document.getElementById('login__action-button').addEventListener('click', () => {
     document.getElementById('login__action-button').disabled = true;
 
-    postData('login', {
+    sendData('login', JSON.stringify({
         username: document.getElementById('username').value,
         password: document.getElementById('password').value
-    }).then(message => {
+    })).then(message => {
         document.getElementById('login__action-button').disabled = false;
 
         if (message) {

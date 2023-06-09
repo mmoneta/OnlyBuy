@@ -1,0 +1,22 @@
+.product-creator__content {
+    align-items: center;
+    display: flex; 
+    min-height: 100vh;
+}
+
+#images {
+    display: none;
+}
+
+.preview {
+    margin: 30px 0;
+}
+
+.preview > ol {
+    list-style-type: none;
+    padding: 0;
+}
+
+.preview img {
+    width: 100%;
+}

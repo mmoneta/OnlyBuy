@@ -8,7 +8,10 @@
     Router::get('login', 'LoginController');
     Router::get('register', 'RegisterController');
     Router::get('forgot-password', 'ForgotPasswordController');
+    Router::get('product-creator', 'ProductCreatorController');
+    
     Router::post('login', 'LoginController');
     Router::post('register', 'RegisterController');
+    Router::post('product-creator', 'ProductCreatorController');
 
     Router::run($path);

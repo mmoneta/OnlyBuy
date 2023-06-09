@@ -3,7 +3,7 @@ body {
 }
 
 header > h1 {
-    margin-bottom: 29px;
+    padding: 29px 0;
 }
 
 form {
@@ -16,23 +16,38 @@ form button, form label {
     width: 100%;
 }
 
-form label, form label > input {
+form label, form label > input, form label > textarea {
     margin: 8px 0;
 }
 
-form button, form label > input {
+form button, form label > input, form label > textarea {
     padding: 16px !important;
     width: 100%;
 }
 
-form input {
+form label:has(input[type="checkbox"]) {
+    display: grid;
+    grid-auto-flow: column;
+}
+
+form input, form textarea {
     border: 1px solid #E0E2EA !important;
     border-radius: 8px;
     color: #9194A5;
 }
 
-form button {
+form textarea {
+    max-height: 200px;
+    min-height: 100px;
+    resize: vertical;
+}
+
+form button.btn-primary {
     margin-top: 56px;
+}
+
+input[type="checkbox"]:checked {
+    accent-color: #4460F7;
 }
 
 .btn {

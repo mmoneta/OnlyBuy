@@ -12,11 +12,27 @@
 
     <body>
         <div class="container">
-            <div class="row dashboard-content">
-                <div class="col-sm-6">
-                    <input placeholder="Search" type="text" />
+            <div class="row dashboard__menu">
+                <div class="col-md-6 col-sm-6 col-12">
+                    <input placeholder="Search" type="search" />
                 </div>
-            </div>    
+
+                <div class="col-md-3 col-sm-3 col-6 dashboard__menu-checkboxes">
+                    <label for="active">
+                        <input id="active" type="checkbox" />
+                        <span>Active</span>
+                    </label> 
+
+                    <label for="promo">
+                        <input id="promo" type="checkbox" />
+                        <span>Promo</span>
+                    </label> 
+                </div>
+            </div>
+            
+            <div class="row dashboard__content">
+
+            </div>
         </div>
     </body>
 </html>

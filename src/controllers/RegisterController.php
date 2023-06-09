@@ -1,5 +1,6 @@
 <?php
     require_once 'AppController.php';
+    require_once __DIR__.'/../repository/UserRepository.php';
 
     class RegisterController extends AppController {
         public function index() {
@@ -27,11 +28,6 @@
 
             header('Content-type: application/json');
             
-            if ($isUserCreated) {
-                echo json_encode(true);
-                return;
-            }
-            
-            echo json_encode(false);
+            echo json_encode($isUserCreated);
         }
     }
