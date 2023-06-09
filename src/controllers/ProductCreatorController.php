@@ -22,7 +22,13 @@
 
             $productRepository = new ProductRepository();
 
-            $isProductCreated = $productRepository->createProduct($_POST['name'], $_POST['description']);
+            $isProductCreated = $productRepository->createProduct(
+                $_POST['name'],
+                $_POST['description'],
+                $_FILES['images'],
+                $_POST['isActive'] === 'true' ? true : false,
+                $_POST['isPromo'] === 'true' ? true : false
+            );
 
             header('Content-type: application/json');
             

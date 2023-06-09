@@ -2,7 +2,7 @@
     class Files {
         const MAX_FILE_SIZE = 1024 * 1024;
         const SUPPORTED_TYPES = ['image/png', 'image/jpeg'];
-        const UPLOAD_DIRECTORY = '/../public/uploads/';
+        const UPLOAD_DIRECTORY = 'public/uploads/';
 
         private static $instance;
 
@@ -14,6 +14,10 @@
             }
 
             return self::$instance;     
+        }
+
+        function getUploadDirectory(): string {
+            return self::UPLOAD_DIRECTORY;
         }
 
         function validate(array $file): bool {

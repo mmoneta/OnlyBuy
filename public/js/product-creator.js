@@ -17,7 +17,16 @@ function isTextControlInvalid() {
 document.getElementById('product-creator__action-button').addEventListener('click', () => {
     document.getElementById('product-creator__action-button').disabled = true;
 
-    const formData = new FormData(document.querySelector('form'));
+    const formData = new FormData();
+
+    const currentFiles = document.getElementById('images').files;
+
+    for (const file of currentFiles) {
+        formData.append("images[]", file);
+    }
+
+    formData.append('name', document.getElementById('name').value);
+    formData.append('description', document.getElementById('description').value);
     formData.append('isActive', document.getElementById('active').checked);
     formData.append('isPromo', document.getElementById('promo').checked);
 
@@ -27,7 +36,7 @@ document.getElementById('product-creator__action-button').addEventListener('clic
         document.getElementById('product-creator__action-button').disabled = false;
 
         if (message) {
-            // window.location.replace(window.location.origin);
+            window.location.replace(window.location.origin);
         }
     });
 });

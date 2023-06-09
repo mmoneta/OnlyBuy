@@ -13,10 +13,22 @@
             $sql->bindParam(':is_active', $isActive, PDO::PARAM_BOOL);
             $sql->bindParam(':is_promo', $isPromo, PDO::PARAM_BOOL);
 
-            print_r($images);
-
             try {
                 $sql->execute();
+                $productId = $this->database->connection->lastInsertId();
+
+                for ($i = 0; $i < count($images['name']); $i++) {
+                    $uploadFile = $this->files->getUploadDirectory().basename($images['name'][$i]);
+                    move_uploaded_file($images['tmp_name'][$i], $uploadFile);
+    
+                    $fileSql = $this->database->connection->prepare('
+                        INSERT INTO public.products_images (product_id, file) VALUES(:product_id, :file)
+                    ');
+                    $fileSql->bindParam(':product_id', $productId, PDO::PARAM_INT);
+                    $fileSql->bindParam(':file', $uploadFile, PDO::PARAM_STR);
+                    $fileSql->execute();
+                }
+
                 return true;
             }
             catch (Exception $e) {
