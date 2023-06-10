@@ -1,4 +1,5 @@
-include('public/js/send-data.js');
+include('public/js/utils/alert.js');
+include('public/js/utils/request.js');
 
 const controlNames = ['username', 'password'];
 
@@ -12,15 +13,16 @@ function changeDisabledStatus() {
 document.getElementById('login__action-button').addEventListener('click', () => {
     document.getElementById('login__action-button').disabled = true;
 
-    sendData('login', JSON.stringify({
+    request('login', 'POST', JSON.stringify({
         username: document.getElementById('username').value,
         password: document.getElementById('password').value
     })).then(message => {
-        document.getElementById('login__action-button').disabled = false;
-
         if (message) {
             window.location.replace(window.location.origin);
+            return;
         }
+
+        alert('Incorrect data');
     });
 });
 

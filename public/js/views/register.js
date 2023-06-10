@@ -1,4 +1,4 @@
-include('public/js/send-data.js');
+include('public/js/utils/request.js');
 
 const controlNames = ['username', 'email', 'password', 'repeat-password'];
 
@@ -13,7 +13,7 @@ function changeDisabledStatus() {
 document.getElementById('register__action-button').addEventListener('click', () => {
     document.getElementById('register__action-button').disabled = true;
 
-    sendData('register', JSON.stringify({
+    request('register', 'POST', JSON.stringify({
         username: document.getElementById('username').value,
         email: document.getElementById('email').value,
         password: document.getElementById('password').value,

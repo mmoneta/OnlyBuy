@@ -1,5 +1,5 @@
-include('public/js/files.js');
-include('public/js/send-data.js');
+include('public/js/utils/files.js');
+include('public/js/utils/request.js');
 
 const checkboxControlNames = ['active', 'promo'];
 const textControlNames = ['name', 'description'];
@@ -30,9 +30,7 @@ document.getElementById('product-creator__action-button').addEventListener('clic
     formData.append('isActive', document.getElementById('active').checked);
     formData.append('isPromo', document.getElementById('promo').checked);
 
-    sendData('product-creator', formData, {
-        method: "POST"
-    }).then(message => {
+    request('product-creator', 'POST', formData, {}).then(message => {
         document.getElementById('product-creator__action-button').disabled = false;
 
         if (message) {

@@ -9,7 +9,6 @@
                 return $this->render('dashboard');
             }
             
-            $url = "http://$_SERVER[HTTP_HOST]";
-            header("Location: {$url}/login");
+            header("Location: {$this->baseUrl()}/login");
         }
     }

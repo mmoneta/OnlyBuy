@@ -4,14 +4,11 @@
 
     class LoginController extends AppController {
         public function index() {
-            session_start();
-
             if (!$_SESSION['user']) {
                 return $this->render('login');
             }
 
-            $url = "http://$_SERVER[HTTP_HOST]";
-            header("Location: {$url}");
+            header("Location: {$this->baseUrl()}");
         }
 
         public function login() {

@@ -10,8 +10,7 @@
                 return $this->render('product-creator');
             }
             
-            $url = "http://$_SERVER[HTTP_HOST]";
-            header("Location: {$url}");
+            header("Location: {$this->baseUrl()}");
         }
 
         public function productCreator() {
@@ -29,8 +28,6 @@
                 $_POST['isActive'] === 'true' ? true : false,
                 $_POST['isPromo'] === 'true' ? true : false
             );
-
-            header('Content-type: application/json');
             
             echo json_encode($isProductCreated);
         }

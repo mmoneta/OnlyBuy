@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 
 <html lang="en">
-    <head>
+    <head>  
+        <title>Only Buy</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
         <link rel="stylesheet" type="text/css" href="public/css/style.css">
         <link rel="stylesheet" type="text/css" href="public/css/views/dashboard.css">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
         <script src="public/js/main.js" defer></script>
-        <script src="public/js/products.js" defer></script>
-        <title>Only Buy</title>
+        <script src="public/js/views/products.js" defer></script>
     </head>
 
     <body>

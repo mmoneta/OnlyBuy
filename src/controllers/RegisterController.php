@@ -10,8 +10,7 @@
                 return $this->render('register');
             }
 
-            $url = "http://$_SERVER[HTTP_HOST]";
-            header("Location: {$url}");
+            header("Location: {$this->baseUrl()}");
         }
 
         public function register() {
@@ -25,8 +24,6 @@
             $data = json_decode($json);
 
             $isUserCreated = $userRepository->createUser($data->username, $data->email, $data->password);
-
-            header('Content-type: application/json');
             
             echo json_encode($isUserCreated);
         }

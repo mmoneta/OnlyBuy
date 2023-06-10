@@ -6,8 +6,6 @@
         public function roles() {
             $roleRepository = new RoleRepository();
             $roles = $roleRepository->getRoles();
-
-            header('Content-type: application/json');
             
             echo json_encode($roles);
         }

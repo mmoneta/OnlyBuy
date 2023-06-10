@@ -1,11 +1,13 @@
 <?php
     class AppController {
-        protected $database;
-
         private $request;
 
         public function __construct() {
             $this->request = $_SERVER['REQUEST_METHOD'];
+        }
+
+        protected function baseUrl(): string {
+            return "http://$_SERVER[HTTP_HOST]";
         }
 
         protected function isAjax(): bool {

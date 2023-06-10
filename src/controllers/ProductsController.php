@@ -6,8 +6,6 @@
         public function products() {
             $productRepository = new ProductRepository();
             $products = $productRepository->getProducts();
-
-            header('Content-type: application/json');
             
             echo json_encode($products);
         }
