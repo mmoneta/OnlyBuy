@@ -2,10 +2,15 @@
   require_once 'src/utils/DashesToCamelcase.php';
 
   require_once 'src/controllers/DashboardController.php';
-  require_once 'src/controllers/LoginController.php';
-  require_once 'src/controllers/RegisterController.php';
   require_once 'src/controllers/ForgotPasswordController.php';
+  require_once 'src/controllers/LoginController.php';
   require_once 'src/controllers/ProductCreatorController.php';
+  require_once 'src/controllers/ProductEditorController.php';
+  require_once 'src/controllers/ProductsController.php';
+  require_once 'src/controllers/RegisterController.php';
+  require_once 'src/controllers/UserCreatorController.php';
+  require_once 'src/controllers/UserEditorController.php';
+  require_once 'src/controllers/UsersController.php';
 
   class Router {
     public static $routes;

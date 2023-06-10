@@ -7,6 +7,8 @@
         <link rel="stylesheet" type="text/css" href="public/css/dashboard.css">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="public/js/main.js" defer></script>
+        <script src="public/js/products.js" defer></script>
         <title>Only Buy</title>
     </head>
 

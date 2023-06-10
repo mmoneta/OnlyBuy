@@ -36,32 +36,31 @@
             }
         }
 
-        public function getProducts(string $username, string $password): array {
+        public function getProducts(): array {
             $sql = $this->database->connection->prepare('
-                SELECT public.users.username, public.users.email, public.users.password, public.roles.name, public.users.created_date, public.users.modified_date
-                    FROM public.users
-                    INNER JOIN public.roles ON public.users.role_id = public.roles.role_id
-                    WHERE public.users.username = :username
+                SELECT * FROM public.products
+                    LEFT JOIN public.products_images ON products.product_id = products_images.product_id
             ');
-            $sql->bindParam(':username', $username, PDO::PARAM_STR);
             $sql->execute();
 
-            $user = $sql->fetch(PDO::FETCH_ASSOC);
+            $products = $sql->fetchAll(PDO::FETCH_ASSOC);
 
-            if ($user == false) {
-                return null;
-            }
+            $output = [];
 
-            if (password_verify($password, $user['password'])) {
-                return new User(
-                    $user['username'],
-                    $user['email'],
-                    $user['name'],
-                    $user['created_date'],
-                    $user['modified_date']
+            for ($i = 0; $i < count($products); $i++) {
+                echo($products[$i]["product_id"]);
+                $product = new Product(
+                    $products[$i]['product_id'],
+                    $products[$i]['name'],
+                    $products[$i]['description'],
+                    $products[$i]['is_active'],
+                    $products[$i]['is_promo'],
+                    [$products[$i]['file']]
                 );
+                    
+                array_push($output, $product);
             }
 
-            return null;
+            return $output;
         }
     }

@@ -12,7 +12,7 @@ async function sendData(url = "", data = {}, options = {
   // Default options are marked with *
     const response = await fetch(url, {
       method: options.method, 
-      mode: options.mode, 
+      ...(options?.mode ? { mode: options.mode } : {}), 
       ...(options?.cache ? { cache: options.cache } : {}),
       ...(options?.credentials ? { credentials: options.credentials } : {}),
       ...(options?.headers ? { 
@@ -20,7 +20,7 @@ async function sendData(url = "", data = {}, options = {
       } : {}),
       ...(options?.redirect ? { redirect: options.redirect } : {}),
       ...(options?.referrerPolicy ? { referrerPolicy: options.referrerPolicy } : {}),
-      body: data
+      ...(data ? { body: data } : {})
     });
     
     return response.json(); // parses JSON response into native JavaScript objects
