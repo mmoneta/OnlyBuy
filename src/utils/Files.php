@@ -16,6 +16,14 @@
             return self::$instance;     
         }
 
+        function getMaxFileSize(): int {
+            return self::MAX_FILE_SIZE;
+        }
+
+        function getSupportedTyoes(): array {
+            return self::SUPPORTED_TYPES;
+        }
+
         function getUploadDirectory(): string {
             return self::UPLOAD_DIRECTORY;
         }

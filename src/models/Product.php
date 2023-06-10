@@ -1,20 +1,25 @@
 <?php
-    class Product {
-        private $productId;
-        private $name;
-        private $description;
-        private $isActive;
-        private $isPromo;
-        private $images;
+    require_once __DIR__.'/BaseModel.php';
+
+    class Product extends BaseModel {
+        public $productId;
+        public $name;
+        public $description;
+        public $isActive;
+        public $isPromo;
+        public $images;
 
         public function __construct(
             int $productId,
             string $name,
             string $description,
-            string $isActive,
-            string $isPromo,
-            array $images
+            bool $isActive,
+            bool $isPromo,
+            array $images,
+            string $createdDate,
+            string $modifiedDate
         ) {
+            parent::__construct($createdDate, $modifiedDate);
             $this->productId = $productId;
             $this->name = $name;
             $this->description = $description;

@@ -1,10 +1,10 @@
 <?php
-    class User {
-        private $username;
-        private $email;
-        private $role;
-        private $createdDate;
-        private $modifiedDate;
+    require_once __DIR__.'/BaseModel.php';
+
+    class User extends BaseModel {
+        public $username;
+        public $email;
+        public $role;
 
         public function __construct(
             string $username,
@@ -13,11 +13,10 @@
             string $createdDate,
             string $modifiedDate
         ) {
+            parent::__construct($createdDate, $modifiedDate);
             $this->username = $username;
             $this->email = $email;
             $this->role = $role;
-            $this->createdDate = $createdDate;
-            $this->modifiedDate = $modifiedDate;
         }
 
         public function getUsername(): string {
