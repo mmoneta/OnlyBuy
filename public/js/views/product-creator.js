@@ -39,48 +39,7 @@ document.getElementById('product-creator__action-button').addEventListener('clic
     });
 });
 
-const preview = document.querySelector('.preview');
-
-document.getElementById('images').addEventListener('change', () => {
-    while(preview.firstChild) {
-        preview.removeChild(preview.firstChild);
-    }
-    
-    const currentFiles = document.getElementById('images').files;
-  
-    if (currentFiles.length === 0) {
-        const paragraph = document.createElement('p');
-        paragraph.textContent = 'No files currently selected for upload';
-        preview.appendChild(paragraph);
-        return;
-    }
-
-    const list = document.createElement('ol');
-    preview.appendChild(list);
-
-    for (const file of currentFiles) {
-        const listItem = document.createElement('li');
-        const paragraph = document.createElement('p');
-
-        if (validFileType(file)) {
-            paragraph.innerHTML = `
-                File name: ${file.name}
-                <br />
-                File size: ${returnFileSize(file.size)}.
-            `;
-            paragraph.style = 'margin: 10px 0; line-height: 24px';
-            const image = document.createElement('img');
-            image.src = URL.createObjectURL(file);
-            listItem.appendChild(image);
-            listItem.appendChild(paragraph);
-        } else {
-            paragraph.textContent = `File name ${file.name}: not a valid file type. Update your selection.`;
-            listItem.appendChild(paragraph);
-        }
-
-        list.appendChild(listItem);
-    }    
-});
+document.getElementById('images').addEventListener('change', () => handleUpload('images'));
 
 checkboxControlNames.forEach(controlName => {
     document.getElementById(controlName).addEventListener('change', () => {

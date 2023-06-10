@@ -2,6 +2,7 @@
 @import url(./components/alert.css);
 @import url(./components/button.css);
 @import url(./components/form.css);
+@import url(./components/preview.css);
 @import url(./components/table.css);
 
 body {
@@ -10,6 +11,10 @@ body {
 
 header > h1 {
     padding: 29px 0;
+}
+
+.d-none {
+    display: none !important;
 }
 
 .p-0 {

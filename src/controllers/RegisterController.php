@@ -16,6 +16,7 @@
         public function register() {
             if ($this->isGet()) {
                 self::index();
+                return;
             }
 
             $json = file_get_contents('php://input');

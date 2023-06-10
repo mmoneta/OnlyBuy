@@ -30,6 +30,30 @@
                         </div>
 
                         <div>
+                            <label for="avatar">Choose image for avatar to upload (PNG, JPG)</label>
+
+                            <button
+                                onclick="document.getElementById('avatar').click()"
+                                class="btn btn-secondary"
+                                type="button"
+                            >
+                                Select file
+                            </button>
+
+                            <input
+                                accept=".jpg, .jpeg, .png"
+                                class="d-none"
+                                id="avatar"
+                                name="avatar"
+                                type="file"
+                            />
+
+                            <div class="preview">
+                                <p>No file currently selected for upload</p>
+                            </div>
+                        </div>
+
+                        <div>
                             <label for="email">
                                 E-mail
                                 <input id="email" name="email" type="email" placeholder="Enter e-mail" required />

@@ -1,3 +1,4 @@
+include('public/js/utils/files.js');
 include('public/js/utils/request.js');
 
 const controlNames = ['username', 'email', 'password', 'repeat-password'];
@@ -33,3 +34,5 @@ controlNames.forEach(controlName => {
         changeDisabledStatus();
     }, 1000));
 });
+
+document.getElementById('avatar').addEventListener('change', () => handleUpload('avatar'));
