@@ -51,4 +51,29 @@
 
             return null;
         }
+
+        public function getUsers(): array {
+            $sql = $this->database->connection->prepare('
+                SELECT public.users.username, public.users.email, public.roles.name, public.users.created_date, public.users.modified_date
+                    FROM public.users
+                    INNER JOIN public.roles ON public.users.role_id = public.roles.role_id
+            ');
+            $sql->execute();
+
+            $users = $sql->fetchAll(PDO::FETCH_ASSOC);
+
+            $output = [];
+
+            foreach ($users as $user) {
+                $output[] = new User(
+                    $user['username'],
+                    $user['email'],
+                    $user['name'],
+                    $user['created_date'],
+                    $user['modified_date']
+                );
+            }
+
+            return $output;
+        }
     }

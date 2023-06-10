@@ -8,6 +8,7 @@
   require_once 'src/controllers/ProductEditorController.php';
   require_once 'src/controllers/ProductsController.php';
   require_once 'src/controllers/RegisterController.php';
+  require_once 'src/controllers/RolesController.php';
   require_once 'src/controllers/UserCreatorController.php';
   require_once 'src/controllers/UserEditorController.php';
   require_once 'src/controllers/UsersController.php';

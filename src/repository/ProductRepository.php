@@ -21,8 +21,8 @@
 
                 for ($i = 0; $i < count($images['name']); $i++) {
                     $uploadFile = $this->files->getUploadDirectory()
-                        .basename($images['name'][$i])
-                        .basename(date('d_m_y_h_i_s'));
+                        .basename(date('d_m_y_h_i_s_'))
+                        .basename($images['name'][$i]);
                     move_uploaded_file($images['tmp_name'][$i], $uploadFile);
     
                     $fileSql = $this->database->connection->prepare('

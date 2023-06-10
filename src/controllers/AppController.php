@@ -8,6 +8,10 @@
             $this->request = $_SERVER['REQUEST_METHOD'];
         }
 
+        protected function isAjax(): bool {
+            return 'xmlhttprequest' == strtolower($_SERVER['HTTP_X_REQUESTED_WITH'] ?? '');
+        }
+
         protected function isGet(): bool {
             return $this->request === 'GET';
         }
