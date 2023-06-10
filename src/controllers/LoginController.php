@@ -4,6 +4,8 @@
 
     class LoginController extends AppController {
         public function index() {
+            session_start();
+
             if (!$_SESSION['user']) {
                 return $this->render('login');
             }

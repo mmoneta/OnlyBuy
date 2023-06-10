@@ -49,19 +49,19 @@
 
             $products = $sql->fetchAll(PDO::FETCH_ASSOC);
 
+            $output = array();
+
             foreach ($products as $product) {
-                $output[] = new Product(
-                    $product['product_id'],
-                    $product['name'],
-                    $product['description'],
-                    $product['is_active'],
-                    $product['is_promo'],
-                    [$product['file']],
-                    $product['created_date'],
-                    $product['modified_date']
-                );
+                $output[$product['product_id']]['productId'] = $product['product_id'];
+                $output[$product['product_id']]['name'] = $product['name'];
+                $output[$product['product_id']]['description'] = $product['description'];
+                $output[$product['product_id']]['isActive'] = $product['is_active'];
+                $output[$product['product_id']]['isPromo'] = $product['is_promo'];
+                $output[$product['product_id']]['createdDate'] = $product['created_date'];
+                $output[$product['product_id']]['modifiedDate'] = $product['modified_date'];
+                $output[$product['product_id']]['images'][] = $product['file'];
             }
 
-            return $output;
+            return array_values($output);
         }
     }

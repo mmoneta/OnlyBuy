@@ -13,13 +13,13 @@
     </head>
 
     <body>
-        <div class="container">
+        <div class="container-fluid">
             <div class="row dashboard__menu">
-                <div class="col-md-6 col-sm-6 col-12">
+                <div class="col-md-5 col-sm-6 col-12 p-0">
                     <input placeholder="Search" type="search" />
                 </div>
 
-                <div class="col-md-3 col-sm-3 col-6 dashboard__menu-checkboxes">
+                <div class="col-md-2 col-sm-4 col-6 dashboard__menu-checkboxes">
                     <label for="active">
                         <input id="active" type="checkbox" />
                         <span>Active</span>
@@ -33,7 +33,31 @@
             </div>
             
             <div class="row dashboard__content">
+                <div class="col-md-4">
+                    <div class="col-md-12 dashboard__product">
+                        <p>Test Mateusz</p>
+                    </div>
+                </div>
 
+                <div class="col-md-4">
+                    <div class="col-md-12 dashboard__product">
+                        <p>Test Mateusz</p>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="col-md-12 dashboard__product">
+                        <img
+                            src="public/uploads/10_06_23_07_55_19_Tapeta-3000x2000 (ekran 16_10).png"
+                            alt="Image of product"
+                            class="w-100"
+                        />
+
+                        <h4>Test Mateusz</h4>
+
+                        <p>Test Mateusz</p>
+                    </div>
+                </div>
             </div>
         </div>
     </body>

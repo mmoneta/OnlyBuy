@@ -1,4 +1,6 @@
-.container {
+.container-fluid {
+    display: flex;
+    flex-direction: column;
     min-height: 100vh;
 }
 
@@ -6,6 +8,7 @@
     align-items: center;
     display: flex;
     margin: 48px 0 !important;
+    padding: 0 108px;
 }
 
 label {
@@ -22,24 +25,31 @@ label > span {
 }
 
 label > input[type="checkbox"], input[type="search"] {
-    border: 1px solid #E0E2EA !important;
+    border: 1px solid var(--gray-2) !important;
     border-radius: 8px;
 }
 
 input[type="search"] {
-    color: #333333 !important;
+    color: var(--gray-4) !important;
     max-width: 392px;
     padding: 16px;
     width: 100%;
 }
 
 .dashboard__content {
-    background-color: #F5F5F5;
-    height: max-content;
+    background-color: var(--gray-1);
+    flex-grow: 1;
+    padding: 56px 108px;
 }
 
 .dashboard__menu-checkboxes {
     display: grid;
     grid-auto-flow: column;
     grid-gap: 20px;
+}
+
+.dashboard__product {
+    background-color: var(--white);
+    height: 400px;
+    margin-bottom: 32px;
 }

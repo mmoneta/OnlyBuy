@@ -4,6 +4,8 @@
 
     class UsersController extends AppController {
         public function index() {
+            session_start();
+            
             if (isset($_SESSION['user']) && $_SESSION['user']->getRole() == 'admin') {
                 return $this->render('users');
             }

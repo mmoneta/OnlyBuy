@@ -1,9 +1,11 @@
+@import url(../colors.css);
+
 #alert-container {
     z-index: 1;
- }
+}
 
- .alert-message {
-    background: #fff;
+.alert-message {
+    background: var(--white);;
     border: 1px solid #ddd;
     bottom: 25px;
     box-shadow: 5px 5px 10px rgba(0,0,0,0.1);
@@ -11,14 +13,14 @@
     padding: 15px;
     position: absolute;
     z-index: 99;
+}
+ 
+.slide-in {
+    animation-name: slideIn;
+    animation-duration: 0.8s;
  }
  
- .slide-in {
-       animation-name: slideIn;
-       animation-duration: 0.8s;
- }
- 
- @keyframes slideIn {
+@keyframes slideIn {
     from {
        transform: translateX(-400px);
     }
@@ -26,12 +28,12 @@
     to {
        transform: translateX(0);
     }
- }
+}
  
- .slide-out {
-       animation-name: slideOut;
-       animation-duration: 0.8s;
- }
+.slide-out {
+    animation-name: slideOut;
+    animation-duration: 0.8s;
+}
  
  @keyframes slideOut {
     from {
@@ -43,4 +45,4 @@
        transform: translateY(80px);
        opacity: 0;
     }
- }
+}

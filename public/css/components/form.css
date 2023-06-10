@@ -23,9 +23,9 @@ form label:has(input[type="checkbox"]) {
 }
 
 form input, form textarea {
-    border: 1px solid #E0E2EA !important;
+    border: 1px solid var(--gray-2) !important;
     border-radius: 8px;
-    color: #9194A5;
+    color: var(--gray-4);
 }
 
 form textarea {
@@ -39,5 +39,5 @@ form button.btn-primary {
 }
 
 input[type="checkbox"]:checked {
-    accent-color: #4460F7;
+    accent-color: var(--primary-color);
 }
