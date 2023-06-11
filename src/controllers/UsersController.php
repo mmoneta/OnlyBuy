@@ -7,6 +7,10 @@
             session_start();
             
             if (isset($_SESSION['user']) && $_SESSION['user']->getRole() == 'admin') {
+                if (end($this->pathFragments()) === 'edit') {
+                    return $this->render('user-creator');
+                }
+
                 return $this->render('users');
             }
 

@@ -21,6 +21,7 @@
                     ["sslmode"  => "prefer"]
                 );
                 $this->connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                $this->connection->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
             }
             catch (PDOException $e) {
                 die("Connection failed: ".$e->getMessage());

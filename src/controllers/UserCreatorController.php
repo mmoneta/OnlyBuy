@@ -12,4 +12,18 @@
 
             header("Location: {$this->baseUrl()}");
         }
+    
+        public function user() {
+            $userRepository = new UserRepository();
+
+            $isUserCreated = $userRepository->createUser(
+                $_POST['username'],
+                $_FILES['avatar'],
+                $_POST['email'],
+                $_POST['password'],
+                $_POST['roleId']
+            );
+            
+            echo json_encode($isUserCreated);
+        }
     }

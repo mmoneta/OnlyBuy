@@ -13,7 +13,7 @@ table tr:nth-child(even) {
     background-color: var(--gray-1);
 }
 
-table tr:hover {
+table tr:not(:has(th)):hover {
     background-color: var(--gray-2);
 }
 

@@ -1,9 +1,0 @@
-.product-creator__content {
-    align-items: center;
-    display: flex; 
-    min-height: 100vh;
-}
-
-#images {
-    display: none;
-}

@@ -19,8 +19,14 @@
                 $sql->execute();
                 $productId = $this->database->connection->lastInsertId();
 
+                $dir = $this->files->getUploadDirectory().'product/'.$productId;
+
+                if (!is_dir($dir)) {
+                    mkdir($dir, 0700);
+                }
+
                 for ($i = 0; $i < count($images['name']); $i++) {
-                    $uploadFile = $this->files->getUploadDirectory()
+                    $uploadFile = $dir.'/'
                         .basename(date('d_m_y_h_i_s_'))
                         .basename($images['name'][$i]);
                     move_uploaded_file($images['tmp_name'][$i], $uploadFile);

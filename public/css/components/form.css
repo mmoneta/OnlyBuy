@@ -8,11 +8,11 @@ form button, form label {
     width: 100%;
 }
 
-form label, form label > input, form label > textarea {
+form label, form label > input, form label > select, form label > textarea {
     margin: 8px 0;
 }
 
-form button, form label > input, form label > textarea {
+form button, form label > input, form label > select, form label > textarea {
     padding: 16px !important;
     width: 100%;
 }
@@ -22,7 +22,7 @@ form label:has(input[type="checkbox"]) {
     grid-auto-flow: column;
 }
 
-form input, form textarea {
+form input, form textarea, form select {
     border: 1px solid var(--gray-2) !important;
     border-radius: 8px;
     color: var(--gray-4);

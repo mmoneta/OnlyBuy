@@ -10,8 +10,8 @@ window.addEventListener('load', () => {
             addCell(row, user.username);
             addCell(row, user.email);
             addCell(row, user.role);
-            addCell(row, user.createdDate);
-            addCell(row, user.modifiedDate);
+            addCell(row, getDate(user.createdDate));
+            addCell(row, getDate(user.modifiedDate));
 
             const link = document.createElement('a');
             link.innerText = 'Edit';
@@ -23,4 +23,4 @@ window.addEventListener('load', () => {
             document.getElementById('users__table').appendChild(row);
         });
     });
-})
+});

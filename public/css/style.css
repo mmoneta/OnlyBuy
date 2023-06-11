@@ -13,6 +13,13 @@ header > h1 {
     padding: 29px 0;
 }
 
+.content {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    justify-content: center;
+}
+
 .d-none {
     display: none !important;
 }

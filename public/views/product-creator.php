@@ -2,26 +2,22 @@
 
 <html lang="en">
     <head>
-        <title>Only Buy</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
-        <link rel="stylesheet" type="text/css" href="public/css/style.css">
-        <link rel="stylesheet" type="text/css" href="public/css/views/product-creator.css">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito">
-        <script src="public/js/utils/debounce.js" defer></script>
-        <script src="public/js/main.js" defer></script>
-        <script src="public/js/views/product-creator.js" defer></script>
+        <?php include 'base-head-content.php' ?>
+        <script src="public/js/utils/debounce.js" type="text/javascript" defer></script>
+        <script src="public/js/views/product-creator.js" type="text/javascript" defer></script>
     </head>
 
     <body>
         <div class="container">
-            <div class="row product-creator__content">
+            <div class="row content">
                 <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 col-12">
-                    <header class="col-md-12">
+                    <header>
                         <h1>Creator of product</h1>
                     </header>
+                </div>    
                     
-                    <form class="col-md-12">
+                <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 col-12">
+                    <form>
                         <div>
                             <label for="name">
                                 Name
@@ -47,7 +43,14 @@
                                 Select file
                             </button>
 
-                            <input accept=".jpg, .jpeg, .png" id="images" name="images" type="file" multiple />
+                            <input
+                                accept=".jpg, .jpeg, .png"
+                                class="d-none"
+                                id="images"
+                                name="images"
+                                type="file"
+                                multiple
+                            />
 
                             <div class="preview">
                                 <p>No files currently selected for upload</p>

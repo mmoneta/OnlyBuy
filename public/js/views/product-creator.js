@@ -51,8 +51,4 @@ checkboxControlNames.forEach(controlName => {
     });
 });
 
-textControlNames.forEach(controlName => {
-    document.getElementById(controlName).addEventListener('keydown', debounce(() => {
-        changeDisabledStatus();
-    }, 1000));
-});
+handleControlsEvent(textControlNames, 'keydown', debounce(() => changeDisabledStatus(), 1000));

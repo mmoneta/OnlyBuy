@@ -19,12 +19,15 @@
                 return;
             }
 
-            $json = file_get_contents('php://input');
             $userRepository = new UserRepository();
 
-            $data = json_decode($json);
-
-            $isUserCreated = $userRepository->createUser($data->username, $data->email, $data->password);
+            $isUserCreated = $userRepository->createUser(
+                $_POST['username'],
+                $_FILES['avatar'],
+                $_POST['email'],
+                $_POST['password'],
+                1
+            );
             
             echo json_encode($isUserCreated);
         }
