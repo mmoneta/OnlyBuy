@@ -7,7 +7,7 @@
 
         public function __construct() {
             parent::__construct();
-            $this->$userRepository = new UserRepository();
+            $this->userRepository = new UserRepository();
         }
 
         public function index(string $username) {
@@ -24,10 +24,11 @@
             header("Location: {$this->baseUrl()}");
         }
 
-        public function users(string $username) {
+        public function users(string $username = '') {
             if ($this->isAjax()) {
-                $users = $userRepository->getUsers();
+                $users = $this->userRepository->getUsers();
                     
+                http_response_code(200);
                 echo json_encode($users);
                 return;
             }

@@ -7,11 +7,11 @@
 
         public function __construct() {
             parent::__construct();
-            $this->$productRepository = new ProductRepository();
+            $this->productRepository = new ProductRepository();
         }
 
         public function products() {
-            $products = $productRepository->getProducts();
+            $products = $this->productRepository->getProducts();
             
             http_response_code(200);
             echo json_encode($products);

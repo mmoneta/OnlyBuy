@@ -7,7 +7,7 @@
 
         public function __construct() {
             parent::__construct();
-            $this->$productRepository = new ProductRepository();
+            $this->productRepository = new ProductRepository();
         }
 
         public function index() {
@@ -26,7 +26,7 @@
                 return;
             }
 
-            $isProductCreated = $productRepository->createProduct(
+            $isProductCreated = $this->productRepository->createProduct(
                 $_POST['name'],
                 $_POST['description'],
                 $_FILES['images'],

@@ -7,7 +7,7 @@
 
         public function __construct() {
             parent::__construct();
-            $this->$userRepository = new UserRepository();
+            $this->userRepository = new UserRepository();
         }
         
         public function index() {
@@ -26,7 +26,7 @@
                 return;
             }
 
-            $isUserCreated = $userRepository->createUser(
+            $isUserCreated = $this->userRepository->createUser(
                 $_POST['username'],
                 $_FILES['avatar'],
                 $_POST['email'],

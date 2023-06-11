@@ -32,7 +32,7 @@
         echo file_get_contents($url);
         return;
       }
-      
+
       $urlParts = explode("/", $url);
       $action = $urlParts[0];
       $id = $urlParts[1] ?? '';
@@ -46,6 +46,11 @@
       
       $action = method_exists($controller, $action) ? $action : 'index';
 
-      $object->$action($id);
+      if ($id) {
+        $object->$action($id);
+        return;
+      }
+
+      $object->$action();
     }
   }

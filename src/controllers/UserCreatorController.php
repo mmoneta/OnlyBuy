@@ -3,13 +3,13 @@
     require_once __DIR__.'/../repository/UserRepository.php';
 
     class UserCreatorController extends AppController {
-        private $productRepository;
+        private $userRepository;
 
         public function __construct() {
             parent::__construct();
-            $this->$productRepository = new ProductRepository();
+            $this->userRepository = new UserRepository();
         }
-        
+
         public function index() {
             session_start();
 
@@ -21,7 +21,7 @@
         }
     
         public function user() {
-            $isUserCreated = $userRepository->createUser(
+            $isUserCreated = $this->userRepository->createUser(
                 $_POST['username'],
                 $_FILES['avatar'],
                 $_POST['email'],
