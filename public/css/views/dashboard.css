@@ -42,6 +42,13 @@ input[type="search"] {
     padding: 56px 108px;
 }
 
+#spinner {
+    height: 50px;
+    left: 50%;
+    position: absolute;
+    top: 55%;
+}
+
 .dashboard__content-empty {
     align-items: center;
     background: var(--white);

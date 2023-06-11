@@ -35,6 +35,8 @@
                     <p>There are no products on the list</p>
                 </div>
             </div>
+
+            <img id="spinner" src="public/icons/spinner.svg" alt="Spinner">
         </div>
     </body>
 </html>

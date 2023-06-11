@@ -1,6 +1,17 @@
 include('public/js/utils/request.js');
 
-window.addEventListener('load', () => {
+window.addEventListener('load', () => loadProducts());
+
+function loadProducts() {
+    let value = 45;
+
+    const interval = setInterval(() => {
+        document.getElementById('spinner').style.transform = 'rotate(' + value + 'deg)';
+        value += 45;
+    }, 100);
+
+    document.getElementById('spinner').style.display = 'block';
+
     request('products', 'GET', null, {}).then(products => {
         if (products.length) {
             document.querySelector('.dashboard__content-empty').style.display = 'none';
@@ -39,9 +50,13 @@ window.addEventListener('load', () => {
                 document.querySelector('.dashboard__content').appendChild(container);
             });
 
+            document.getElementById('spinner').style.display = 'none';
+            clearInterval(interval);
+
             return;
         }
         
+        document.getElementById('spinner').style.display = 'none';
         document.querySelector('.dashboard__content-empty').style.display = 'flex';
     });
-})
+}
