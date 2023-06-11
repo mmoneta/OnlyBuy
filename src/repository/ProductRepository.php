@@ -34,7 +34,7 @@
                 for ($i = 0; $i < count($images['name']); $i++) {
                     $uploadFile = $dir.'/'
                         .basename(date('d_m_y_h_i_s_'))
-                        .basename($images['name'][$i]);
+                        .basename(str_replace(' ', '_', $images['name'][$i]));
                     move_uploaded_file($images['tmp_name'][$i], $uploadFile);
     
                     $fileSql = $this->database->connection->prepare('

@@ -15,7 +15,7 @@
 
                 $uploadFile = $dir.'/'
                     .basename(date('d_m_y_h_i_s_'))
-                    .basename($avatar['name']);
+                    .basename(str_replace(' ', '_', $avatar['name']));
                 move_uploaded_file($avatar['tmp_name'], $uploadFile);
             } 
 

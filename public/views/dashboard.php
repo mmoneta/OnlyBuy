@@ -28,18 +28,11 @@
             </div>
             
             <div class="row dashboard__content">
-                <div class="col-md-4">
-                    <div class="col-md-12 dashboard__product">
-                        <img
-                            src="public\uploads\product\41\11_06_23_09_21_27_Screenshot_2023-04-28_132318.png"
-                            alt="Image of product"
-                            class="w-100"
-                        />
+                <div class="dashboard__content-empty">
+                    <img src="public/icons/task-list.svg" alt="List of tasks">
 
-                        <h4>Test Mateusz</h4>
-
-                        <p>Test Mateusz</p>
-                    </div>
+                    <p>Ooops… It’s empty here</p>
+                    <p>There are no products on the list</p>
                 </div>
             </div>
         </div>
