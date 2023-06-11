@@ -3,6 +3,13 @@
     require_once __DIR__.'/../repository/UserRepository.php';
 
     class RegisterController extends AppController {
+        private $userRepository;
+
+        public function __construct() {
+            parent::__construct();
+            $this->$userRepository = new UserRepository();
+        }
+        
         public function index() {
             session_start();
 
@@ -19,16 +26,14 @@
                 return;
             }
 
-            $userRepository = new UserRepository();
-
             $isUserCreated = $userRepository->createUser(
                 $_POST['username'],
                 $_FILES['avatar'],
                 $_POST['email'],
-                $_POST['password'],
-                1
+                $_POST['password']
             );
             
+            http_response_code(200);
             echo json_encode($isUserCreated);
         }
     }

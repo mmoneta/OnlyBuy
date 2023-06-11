@@ -52,4 +52,5 @@ input[type="search"] {
     background-color: var(--white);
     height: 400px;
     margin-bottom: 32px;
+    padding: 0;
 }

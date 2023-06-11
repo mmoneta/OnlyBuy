@@ -15,7 +15,7 @@ window.addEventListener('load', () => {
 
             const link = document.createElement('a');
             link.innerText = 'Edit';
-            link.setAttribute('href', '/users/' + user.username + '/edit');
+            link.setAttribute('href', '/users/' + user.username);
             link.setAttribute('title', 'Edit');
 
             addCell(row, link);

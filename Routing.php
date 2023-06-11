@@ -25,7 +25,9 @@
     }
 
     public static function run ($url) {
-      $action = explode("/", $url)[0];
+      $urlParts = explode("/", $url);
+      $action = $urlParts[0];
+      $id = $urlParts[1] ?? '';
 
       if (!array_key_exists($action, self::$routes)) {
         die("Wrong url!");
@@ -40,6 +42,6 @@
       
       $action = method_exists($controller, $action) ? $action : 'index';
 
-      $object->$action();
+      $object->$action($id);
     }
   }

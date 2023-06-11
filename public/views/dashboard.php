@@ -30,20 +30,8 @@
             <div class="row dashboard__content">
                 <div class="col-md-4">
                     <div class="col-md-12 dashboard__product">
-                        <p>Test Mateusz</p>
-                    </div>
-                </div>
-
-                <div class="col-md-4">
-                    <div class="col-md-12 dashboard__product">
-                        <p>Test Mateusz</p>
-                    </div>
-                </div>
-
-                <div class="col-md-4">
-                    <div class="col-md-12 dashboard__product">
                         <img
-                            src="public/uploads/10_06_23_07_55_19_Tapeta-3000x2000 (ekran 16_10).png"
+                            src="public\uploads\product\41\11_06_23_09_21_27_Screenshot_2023-04-28_132318.png"
                             alt="Image of product"
                             class="w-100"
                         />

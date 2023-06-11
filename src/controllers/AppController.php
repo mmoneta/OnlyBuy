@@ -15,10 +15,6 @@
             return parse_url($path, PHP_URL_PATH);
         }
 
-        protected function pathFragments(): array {
-            return explode("/", $this->currentPath());
-        }
-
         protected function isAjax(): bool {
             return 'xmlhttprequest' == strtolower($_SERVER['HTTP_X_REQUESTED_WITH'] ?? '');
         }
