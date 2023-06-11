@@ -25,13 +25,17 @@
     }
 
     public static function run ($url) {
+      if (file_exists($url)) {
+        header('Content-Type: '.mime_content_type($url));
+        header('Content-Length: '.filesize($url));
+
+        echo file_get_contents($url);
+        return;
+      }
+      
       $urlParts = explode("/", $url);
       $action = $urlParts[0];
       $id = $urlParts[1] ?? '';
-
-      if (!array_key_exists($action, self::$routes)) {
-        die("Wrong url!");
-      }
 
       $controller = self::$routes[$action];
       $object = new $controller;
