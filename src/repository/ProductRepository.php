@@ -19,7 +19,13 @@
                 $sql->execute();
                 $productId = $this->database->connection->lastInsertId();
 
-                $dir = $this->files->getUploadDirectory().'product/'.$productId;
+                $dir = $this->files->getUploadDirectory().'product';
+
+                if (!is_dir($dir)) {
+                    mkdir($dir, 0700);
+                }
+
+                $dir = $dir.'/'.$productId;
 
                 if (!is_dir($dir)) {
                     mkdir($dir, 0700);
