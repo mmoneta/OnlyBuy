@@ -88,6 +88,10 @@ input[type="search"] {
     padding: 0;
 }
 
+.dashboard__product-button {
+    padding: 14px;
+}
+
 .dashboard__product > img {
     max-height: 200px;
     object-fit: contain;

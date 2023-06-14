@@ -4,7 +4,6 @@
     <head>
         <?php include 'base-head-content.php' ?>
         <script src="public/js/utils/debounce.js" type="text/javascript" defer></script>
-        <script src="public/js/views/base-user-creator.js" type="text/javascript" defer></script>
         <script src="public/js/views/register.js" type="text/javascript" defer></script>
     </head>
 

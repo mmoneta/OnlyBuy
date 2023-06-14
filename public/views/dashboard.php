@@ -4,6 +4,7 @@
     <head>  
         <?php include 'base-head-content.php' ?>
         <link rel="stylesheet" type="text/css" href="public/css/views/dashboard.css">
+        <script src="public/js/utils/debounce.js" type="text/javascript" defer></script>
         <script src="public/js/views/products.js" type="text/javascript" defer></script>
     </head>
 
@@ -15,15 +16,11 @@
                 </div>
 
                 <div class="col-md-2 col-sm-4 col-6 dashboard__menu-checkboxes">
-                    <label for="active">
-                        <input id="active" type="checkbox" />
-                        <span>Active</span>
-                    </label> 
+                    <input id="active" name="active" type="checkbox" checked />
+                    <label for="active">Active</label> 
 
-                    <label for="promo">
-                        <input id="promo" type="checkbox" />
-                        <span>Promo</span>
-                    </label> 
+                    <input id="promo" name="promo" type="checkbox" />
+                    <label for="promo">Promo</label>
                 </div>
             </div>
             

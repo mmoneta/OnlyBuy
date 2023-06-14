@@ -52,11 +52,15 @@
             }
         }
 
-        public function getProducts(): array {
+        public function getProducts(string $search, bool $isActive, bool $isPromo): array {
             $sql = $this->database->connection->prepare('
                 SELECT * FROM public.products
                     LEFT JOIN public.products_images ON products.product_id = products_images.product_id
+                    WHERE products.is_active = :is_active
+                        AND products.is_promo = :is_promo
             ');
+            $sql->bindValue(':is_active', $isActive, PDO::PARAM_BOOL);
+            $sql->bindValue(':is_promo', $isPromo, PDO::PARAM_BOOL);
             $sql->execute();
 
             $products = $sql->fetchAll(PDO::FETCH_ASSOC);

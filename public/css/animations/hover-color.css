@@ -1,0 +1,9 @@
+@keyframes hover-color {
+    from {
+      border-color: var(--gray-3);
+    }
+
+    to {
+      border-color: var(--primary-color);
+    }
+}

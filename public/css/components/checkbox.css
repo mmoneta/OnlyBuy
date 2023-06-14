@@ -1,0 +1,89 @@
+input[type="checkbox"] {
+    display: none;
+    position: absolute;
+}
+
+input[type="checkbox"][disabled] {
+    cursor: not-allowed;
+}
+
+input[type="checkbox"] + label {
+    position: relative;
+    display: block;
+    padding-left: 30px;
+    cursor: pointer;
+}
+
+input[type="checkbox"]+ label:hover:before {
+    animation-duration: 0.4s;
+    animation-fill-mode: both;
+    animation-name: hover-color;
+}
+
+input[type="checkbox"] + label:before {
+    border: 1px solid #c0c0c0;
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 20px;
+    height: 20px;
+    content: '';
+}
+
+input[type="checkbox"] + label:after {
+    content: '';
+    display: none;
+    position: absolute;
+}
+
+input[type="checkbox"][disabled] + label:hover,
+input[type="checkbox"][disabled] + label:before,
+input[type="checkbox"][disabled] + label:after {
+    cursor: not-allowed;
+}
+
+input[type="checkbox"][disabled] + label:hover:before {
+    border: 1px solid #e4e4e4;
+    animation-name: none;
+}
+
+input[type="checkbox"][disabled] + label:before {
+    border-color: #e4e4e4;
+}
+
+input[type="checkbox"]:checked + label:before {
+    animation-name: none;
+}
+
+input[type="checkbox"]:checked + label:after {
+    display: block;
+}
+
+input[type="checkbox"] + label:before {
+    border-radius: 3px;
+}
+
+input[type="checkbox"]+ label:after {
+    top: 4px;
+    left: 8px;
+    box-sizing: border-box;
+    width: 5px;
+    height: 10px;
+    transform: rotate(45deg);
+    border-width: 1.6px;
+    border-style: solid;
+    border-color: var(--white);
+    border-top: 0;
+    border-left: 0;
+}
+
+input[type="checkbox"]:checked + label:before {
+    background: var(--primary-color);
+    border: var(--primary-color);
+}
+
+input[type="checkbox"]:checked[disabled] + label:before {
+    background: var(--gray-2);
+    border: var(--gray-2);
+}

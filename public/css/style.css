@@ -1,6 +1,10 @@
 @import url(./colors.css);
+
+@import url(./animations/hover-color.css);
+
 @import url(./components/alert.css);
 @import url(./components/button.css);
+@import url(./components/checkbox.css);
 @import url(./components/form.css);
 @import url(./components/preview.css);
 @import url(./components/table.css);
@@ -31,4 +35,3 @@ header > h1 {
 .w-100 {
     width: 100%;
 }
-

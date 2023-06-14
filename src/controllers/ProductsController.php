@@ -11,7 +11,11 @@
         }
 
         public function products() {
-            $products = $this->productRepository->getProducts();
+            $products = $this->productRepository->getProducts(
+                $_GET['search'],
+                $_GET['active'],
+                $_GET['promo']
+            );
             
             http_response_code(200);
             echo json_encode($products);

@@ -7,7 +7,7 @@
 
         public function __construct() {
             parent::__construct();
-            $this->$userRepository = new UserRepository();
+            $this->userRepository = new UserRepository();
         }
 
         public function index() {
@@ -30,7 +30,7 @@
 
             $data = json_decode($json);
 
-            $user = $userRepository->getUser($data->username, $data->password);
+            $user = $this->userRepository->getUser($data->username, $data->password);
 
             if (!$user) {
                 echo json_encode(false);

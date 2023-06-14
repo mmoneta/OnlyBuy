@@ -58,17 +58,13 @@
                         </div>
 
                         <div>
-                            <label for="promo">
-                                Promo
-                                <input id="promo" name="promo" type="checkbox" />
-                            </label>
+                            <input id="promo" name="promo" type="checkbox" />
+                            <label for="promo">Promo</label> 
                         </div>
 
                         <div>
-                            <label for="active">
-                                Active
-                                <input id="active" name="active" type="checkbox" />
-                            </label>
+                            <input id="active" name="active" type="checkbox" />
+                            <label for="active">Active</label> 
                         </div>
                         
                         <div>
