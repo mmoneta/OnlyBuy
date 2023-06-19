@@ -77,7 +77,7 @@
 
         public function getUsers(): array {
             $sql = $this->database->connection->prepare('
-                SELECT public.users.username, public.users.email, public.roles.name as role, public.users.created_date, public.users.modified_date
+                SELECT public.users.avatar, public.users.username, public.users.email, public.roles.name as role, public.users.created_date, public.users.modified_date
                     FROM public.users
                     INNER JOIN public.roles ON public.users.role_id = public.roles.role_id
             ');
@@ -89,6 +89,7 @@
 
             foreach ($users as $user) {
                 $output[] = new User(
+                    $user['avatar'],
                     $user['username'],
                     $user['email'],
                     $user['role'],

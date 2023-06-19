@@ -8,7 +8,7 @@
         public $role;
 
         public function __construct(
-            string $avatar,
+            ?string $avatar,
             string $username,
             string $email,
             string $role,

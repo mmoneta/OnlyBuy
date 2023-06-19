@@ -11,6 +11,7 @@
             <div class="row">
                 <div class="col-md-12 col-sm-12 col-12">
                     <header>
+                        <img alt="Left arrow" id="left-arrow" src="public/icons/left-arrow.svg" />
                         <h1>Users</h1>
                     </header>
                 </div>

@@ -1,3 +1,9 @@
+if (document.getElementById('left-arrow')) {
+    document.getElementById('left-arrow').addEventListener('click', () => 
+        window.location.replace(window.location.origin)
+    );
+}
+
 function include(file) {
     const script = document.createElement('script');
     script.src = file;

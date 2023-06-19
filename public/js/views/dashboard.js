@@ -59,7 +59,7 @@ function loadUser() {
         logOutButton.innerText = 'Log out';
 
         logOutButton.addEventListener('click', () =>
-            request('session/logOut', 'GET', null, {}).then(() =>
+            request('session/logOut', 'POST', null, {}).then(() =>
                 window.location.replace(window.location.origin)
             )
         );
@@ -72,6 +72,12 @@ function loadUser() {
             productCreatorButton.innerText = 'Creator of product';
             productCreatorButton.setAttribute('href', '/product-creator');
             dropdown.appendChild(productCreatorButton);
+
+            const usersButton = document.createElement('a');
+            usersButton.classList.add('w-100');
+            usersButton.innerText = 'Users';
+            usersButton.setAttribute('href', '/users');
+            dropdown.appendChild(usersButton);
     
             const userCreatorButton = document.createElement('a');
             userCreatorButton.classList.add('w-100');
