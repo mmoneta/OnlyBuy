@@ -47,7 +47,7 @@
 
         public function getUser(string $username, string $password): ?User {
             $sql = $this->database->connection->prepare('
-                SELECT public.users.username, public.users.email, public.users.password, public.roles.name as role, public.users.created_date, public.users.modified_date
+                SELECT public.users.avatar, public.users.username, public.users.email, public.users.password, public.roles.name as role, public.users.created_date, public.users.modified_date
                     FROM public.users
                     INNER JOIN public.roles ON public.users.role_id = public.roles.role_id
                     WHERE public.users.username = :username
@@ -63,6 +63,7 @@
 
             if (password_verify($password, $user['password'])) {
                 return new User(
+                    $user['avatar'],
                     $user['username'],
                     $user['email'],
                     $user['role'],

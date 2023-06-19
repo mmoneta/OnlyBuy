@@ -59,8 +59,8 @@
                     WHERE products.is_active = :is_active
                         AND products.is_promo = :is_promo
             ');
-            $sql->bindValue(':is_active', $isActive, PDO::PARAM_BOOL);
-            $sql->bindValue(':is_promo', $isPromo, PDO::PARAM_BOOL);
+            $sql->bindParam(':is_active', intval($isActive), PDO::PARAM_BOOL);
+            $sql->bindParam(':is_promo', intval($isPromo), PDO::PARAM_BOOL);
             $sql->execute();
 
             $products = $sql->fetchAll(PDO::FETCH_ASSOC);

@@ -7,11 +7,11 @@
 
         public function __construct() {
             parent::__construct();
-            $this->$roleRepository = new RoleRepository();
+            $this->roleRepository = new RoleRepository();
         }
 
         public function roles() {
-            $roles = $roleRepository->getRoles();
+            $roles = $this->roleRepository->getRoles();
             
             http_response_code(200);
             echo json_encode($roles);

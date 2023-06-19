@@ -1,10 +1,8 @@
 <?php
-    require_once 'AppController.php';
+    require_once 'SecurityAppController.php';
 
-    class DashboardController extends AppController {
+    class DashboardController extends SecurityAppController{
         public function index() {
-            session_start();
-
             if ($_SESSION['user']) {
                 return $this->render('dashboard');
             }

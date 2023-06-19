@@ -12,6 +12,7 @@
     Router::get('products', 'ProductsController');
     Router::get('register', 'RegisterController');
     Router::get('roles', 'RolesController');
+    Router::get('session', 'SessionController');
     Router::get('user-creator', 'UserCreatorController');
     Router::get('user-editor', 'UserEditorController');
     Router::get('users', 'UsersController');

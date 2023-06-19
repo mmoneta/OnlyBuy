@@ -1,8 +1,8 @@
 <?php
-    require_once 'AppController.php';
+    require_once 'SecurityAppController.php';
     require_once __DIR__.'/../repository/ProductRepository.php';
 
-    class ProductCreatorController extends AppController {
+    class ProductCreatorController extends SecurityAppController {
         private $productRepository;
 
         public function __construct() {
@@ -11,8 +11,6 @@
         }
 
         public function index() {
-            session_start();
-
             if (isset($_SESSION['user']) && $_SESSION['user']->getRole() == 'admin') {
                 return $this->render('product-creator');
             }

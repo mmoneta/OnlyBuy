@@ -1,8 +1,8 @@
 <?php
-    require_once 'AppController.php';
+    require_once 'SecurityAppController.php';
     require_once __DIR__.'/../repository/UserRepository.php';
 
-    class RegisterController extends AppController {
+    class RegisterController extends SecurityAppController {
         private $userRepository;
 
         public function __construct() {
@@ -11,8 +11,6 @@
         }
         
         public function index() {
-            session_start();
-
             if (!$_SESSION['user']) {
                 return $this->render('register');
             }
