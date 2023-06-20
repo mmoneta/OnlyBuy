@@ -3,7 +3,7 @@ include('public/js/utils/request.js');
 include('public/js/utils/table.js');
 
 window.addEventListener('load', () => {
-    request('users', 'GET').then(users => {
+    request(window.location.origin + '/users', 'GET').then(users => {
         users.forEach(user => {
             const row = document.createElement('tr');
 

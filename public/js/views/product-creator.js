@@ -30,7 +30,7 @@ document.getElementById('product-creator__action-button').addEventListener('clic
     formData.append('isActive', document.getElementById('active').checked);
     formData.append('isPromo', document.getElementById('promo').checked);
 
-    request('product-creator', 'POST', formData, {}).then(message => {
+    request(window.location.origin + '/product-creator', 'POST', formData, {}).then(message => {
         document.getElementById('product-creator__action-button').disabled = false;
 
         if (message) {

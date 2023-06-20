@@ -23,11 +23,19 @@
         }
 
         public function users(string $username = '') {
-            if ($this->isAjax()) {
+            if ($this->isAjax() && !$username) {
                 $users = $this->userRepository->getUsers();
                     
                 http_response_code(200);
                 echo json_encode($users);
+                return;
+            }
+
+            if ($this->isAjax() && $username) {
+                $user = $this->userRepository->getUserDetails($username);
+                    
+                http_response_code(200);
+                echo json_encode($user);
                 return;
             }
 

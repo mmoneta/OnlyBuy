@@ -3,7 +3,7 @@
 <html lang="en">
     <head>
         <?php include 'base-head-content.php' ?>
-        <script src="public/js/views/users.js" type="text/javascript" defer></script>
+        <script src="<?php echo $domainLink ?>/public/js/views/users.js" type="text/javascript" defer></script>
     </head>
 
     <body>
@@ -11,7 +11,7 @@
             <div class="row">
                 <div class="col-md-12 col-sm-12 col-12">
                     <header>
-                        <img alt="Left arrow" id="left-arrow" src="public/icons/left-arrow.svg" />
+                        <img alt="Left arrow" id="left-arrow" src="<?php echo $domainLink ?>/public/icons/left-arrow.svg" />
                         <h1>Users</h1>
                     </header>
                 </div>

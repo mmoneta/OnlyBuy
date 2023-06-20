@@ -28,14 +28,13 @@
 
             $data = json_decode($json);
 
-            $user = $this->userRepository->getUser($data->username, $data->password);
+            $user = $this->userRepository->verifyUser($data->username, $data->password);
 
             if (!$user) {
                 echo json_encode(false);
                 return;
             }
 
-            session_start();
             $_SESSION["user"] = $user;
 
             http_response_code(200);

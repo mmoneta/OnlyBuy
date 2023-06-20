@@ -21,6 +21,19 @@ function getFormData() {
     return formData;
 }
 
+function loadRoles() {
+    request(window.location.origin + '/roles', 'GET').then(roles => {
+        roles.forEach(role => {
+            const option = document.createElement('option');
+
+            option.value = role.roleId;
+            option.innerHTML = role.name;
+
+            document.getElementById('role').appendChild(option);
+        });
+    });
+}
+
 document.getElementById('avatar').addEventListener('change', () => handleUpload('avatar'));
 
 handleControlsEvent(controlNames, 'keydown', debounce(() => changeDisabledStatus(), 1000));

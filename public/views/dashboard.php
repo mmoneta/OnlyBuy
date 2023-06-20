@@ -3,9 +3,9 @@
 <html lang="en">
     <head>  
         <?php include 'base-head-content.php' ?>
-        <link rel="stylesheet" type="text/css" href="public/css/views/dashboard.css">
-        <script src="public/js/utils/debounce.js" type="text/javascript" defer></script>
-        <script src="public/js/views/dashboard.js" type="text/javascript" defer></script>
+        <link rel="stylesheet" type="text/css" href="<?php echo $domainLink ?>/public/css/views/dashboard.css">
+        <script src="<?php echo $domainLink ?>/public/js/utils/debounce.js" type="text/javascript" defer></script>
+        <script src="<?php echo $domainLink ?>/public/js/views/dashboard.js" type="text/javascript" defer></script>
     </head>
 
     <body>
@@ -39,5 +39,7 @@
 
             <img id="spinner" src="public/icons/spinner.svg" alt="Spinner">
         </div>
+
+        <?php include 'modal.php' ?>
     </body>
 </html>

@@ -11,7 +11,7 @@ document.getElementById('register__action-button').addEventListener('click', () 
 
     const formData = getFormData();
 
-    request('register', 'POST', formData, {}).then(message => {
+    request(window.location.origin + '/register', 'POST', formData, {}).then(message => {
         document.getElementById('register__action-button').disabled = false;
 
         if (message) {

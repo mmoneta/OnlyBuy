@@ -3,8 +3,8 @@
 <html lang="en">
     <head>
         <?php include 'base-head-content.php' ?>
-        <script src="public/js/utils/debounce.js" type="text/javascript" defer></script>
-        <script src="public/js/views/login.js" type="text/javascript" defer></script>
+        <script src="<?php echo $domainLink ?>/public/js/utils/debounce.js" type="text/javascript" defer></script>
+        <script src="<?php echo $domainLink ?>/public/js/views/login.js" type="text/javascript" defer></script>
     </head>
 
     <body>

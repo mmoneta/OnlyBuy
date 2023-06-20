@@ -6,7 +6,7 @@ if (document.getElementById('left-arrow')) {
 
 function include(file) {
     const script = document.createElement('script');
-    script.src = file;
+    script.src = window.location.origin + '/' + file;
     script.type = 'text/javascript';
     script.defer = true;
  

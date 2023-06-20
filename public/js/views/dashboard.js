@@ -45,7 +45,7 @@ function getAvatar(user) {
 }
 
 function loadUser() {
-    request('session/user', 'GET', null, {}).then(user => {
+    request(window.location.origin + '/session/user', 'GET', null, {}).then(user => {
         const dropdownContainer = document.getElementById('dashboard__dropdown');
         dropdownContainer.appendChild(getAvatar(user));
 
@@ -59,7 +59,7 @@ function loadUser() {
         logOutButton.innerText = 'Log out';
 
         logOutButton.addEventListener('click', () =>
-            request('session/logOut', 'POST', null, {}).then(() =>
+            request(window.location.origin + '/session/logOut', 'POST', null, {}).then(() =>
                 window.location.replace(window.location.origin)
             )
         );
@@ -101,7 +101,7 @@ function loadProducts(search = '', active = true, promo = false) {
         }, 100);
     }
 
-    request('products?' + new URLSearchParams({
+    request(window.location.origin + '/products?' + new URLSearchParams({
         search,
         active,
         promo
@@ -152,6 +152,17 @@ function loadProducts(search = '', active = true, promo = false) {
                 button.innerText = 'Show details';
                 button.classList.add('btn', 'btn-primary', 'w-100', 'dashboard__product-button');
                 button.setAttribute('type', 'button');
+
+                button.addEventListener('click', () => {
+                    modal.style.display = "block";
+
+                    window.onclick = event => {
+                        if (event.target == modal) {
+                            modal.style.display = "none";
+                        }
+                    }
+                });
+
                 child.appendChild(button);
     
                 container.style.display = 'none';

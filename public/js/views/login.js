@@ -13,7 +13,7 @@ function changeDisabledStatus() {
 document.getElementById('login__action-button').addEventListener('click', () => {
     document.getElementById('login__action-button').disabled = true;
 
-    request('login', 'POST', JSON.stringify({
+    request(window.location.origin + '/login', 'POST', JSON.stringify({
         username: document.getElementById('username').value,
         password: document.getElementById('password').value
     })).then(message => {
