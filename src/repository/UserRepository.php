@@ -46,14 +46,30 @@
         }
 
         public function getUserDetails(string $username): ?User {
-            return $this->getUser($username);
+            $user = $this->getUser($username);
+
+            return new User(
+                $user['avatar'],
+                $user['username'],
+                $user['email'],
+                $user['role'],
+                $user['created_date'],
+                $user['modified_date']
+            );
         }
 
         public function verifyUser(string $username, string $password): ?User {
             $user = $this->getUser($username);
 
             if (password_verify($password, $user['password'])) {
-                return $user;
+                return new User(
+                    $user['avatar'],
+                    $user['username'],
+                    $user['email'],
+                    $user['role'],
+                    $user['created_date'],
+                    $user['modified_date']
+                );
             }
 
             return null;
@@ -85,7 +101,7 @@
             return $output;
         }
 
-        private function getUser(string $username): ?User {
+        private function getUser(string $username) {
             $sql = $this->database->connection->prepare('
                 SELECT public.users.avatar, public.users.username, public.users.email, public.users.password, public.roles.name as role, public.users.created_date, public.users.modified_date
                     FROM public.users
@@ -101,13 +117,6 @@
                 return null;
             }
 
-            return new User(
-                $user['avatar'],
-                $user['username'],
-                $user['email'],
-                $user['role'],
-                $user['created_date'],
-                $user['modified_date']
-            );
+            return $user;
         }
     }
