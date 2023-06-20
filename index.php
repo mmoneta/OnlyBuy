@@ -2,8 +2,10 @@
     require 'Routing.php';
 
     $path = trim($_SERVER['REQUEST_URI'], '/');
-    echo parse_url($path, PHP_URL_SCHEME);
     $path = parse_url($path, PHP_URL_PATH);
+
+    $protocol = strpos(strtolower($_SERVER['SERVER_PROTOCOL']), 'https') === FALSE ? 'http' : 'https';
+    $domainLink = $protocol . '://' . $_SERVER['HTTP_HOST'];
 
     Router::get('', 'DashboardController');
     Router::get('forgot-password', 'ForgotPasswordController');
