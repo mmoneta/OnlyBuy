@@ -144,7 +144,30 @@ function loadProducts(search = '', active = true, promo = false) {
 
                 for (let i = 0; i < 5; i++) {
                     const rate = document.createElement('img');
+                    rate.setAttribute('data-rate', i + 1);
                     rate.src = 'public/icons/star.svg';
+                    rate.classList.add('dashboard__rate');
+
+                    rate.addEventListener('mouseover', () => {
+                        for (let j = 0; j <= i; j++) {
+                            rateContainer.querySelector('[data-rate="' + (j + 1) + '"]').src = 'public/icons/star-filled.svg';
+                        }
+                    });
+
+                    rate.addEventListener('mouseout', () => {
+                        for (let j = 0; j <= i; j++) {
+                            rateContainer.querySelector('[data-rate="' + (j + 1) + '"]').src = 'public/icons/star.svg';
+                        }
+                    });
+
+                    rate.addEventListener('click', () =>
+                        request(window.location.origin + '/product/' + product.productId + '/rate', 'POST', JSON.stringify({
+                            rate: parseInt(rate.getAttribute('data-rate'))
+                        })).then(() =>
+                            window.location.replace(window.location.origin)
+                        )
+                    );
+
                     rateContainer.appendChild(rate);
                 }
     
@@ -155,12 +178,6 @@ function loadProducts(search = '', active = true, promo = false) {
 
                 button.addEventListener('click', () => {
                     modal.style.display = "block";
-
-                    window.onclick = event => {
-                        if (event.target == modal) {
-                            modal.style.display = "none";
-                        }
-                    }
                 });
 
                 child.appendChild(button);

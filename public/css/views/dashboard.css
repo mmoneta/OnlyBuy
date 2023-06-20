@@ -158,3 +158,7 @@ input[type="search"] {
     color: var(--gray-4);
     font-weight: 500;
 }
+
+.dashboard__rate {
+    filter: invert(0.7);
+}
