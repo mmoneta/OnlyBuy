@@ -1,23 +1,32 @@
 <?php
-    require_once 'SecurityAppController.php';
-    require_once __DIR__.'/../repository/ProductRepository.php';
 
-    class ProductsController extends SecurityAppController {
-        private $productRepository;
+namespace src\controllers;
 
-        public function __construct() {
-            parent::__construct();
-            $this->productRepository = new ProductRepository();
-        }
+use src\repository\ProductRepository;
 
-        public function products() {
-            $products = $this->productRepository->getProducts(
-                $_GET['search'],
-                $_GET['active'],
-                $_GET['promo']
-            );
-            
-            http_response_code(200);
-            echo json_encode($products);
-        }
+class ProductsController extends SecurityAppController
+{
+    private ProductRepository $productRepository;
+
+    public function __construct()
+    {
+        parent::__construct();
+        $this->productRepository = new ProductRepository();
     }
+
+    public function products(int $id, string $change): void
+    {
+        if ($change === 'rate') {
+            return;
+        }
+
+        $products = $this->productRepository->getProducts(
+            $_GET['search'],
+            $_GET['active'],
+            $_GET['promo']
+        );
+
+        http_response_code(200);
+        echo json_encode($products);
+    }
+}

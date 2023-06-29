@@ -1,21 +1,27 @@
 <?php
-    class Role {
-        public $roleId;
-        public $name;
 
-        public function __construct(
-            int $roleId,
-            string $name
-        ) {
-            $this->roleId = $roleId;
-            $this->name = $name;
-        }
+namespace src\models;
 
-        public function getRoleId(): int {
-            return $this->roleId;
-        }
+class Role
+{
+    public int $roleId;
+    public string $name;
 
-        public function getName(): string {
-            return $this->name;
-        }
+    public function __construct(
+        int $roleId,
+        string $name
+    ) {
+        $this->roleId = $roleId;
+        $this->name = $name;
     }
+
+    public function getRoleId(): int
+    {
+        return $this->roleId;
+    }
+
+    public function getName(): string
+    {
+        return $this->name;
+    }
+}

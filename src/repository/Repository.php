@@ -1,13 +1,18 @@
 <?php
-    require_once 'Database.php';
-    require_once __DIR__.'/../utils/Files.php';
 
-    class Repository {
-        protected $database;
-        protected $files;
+namespace src\repository;
 
-        public function __construct() {
-            $this->database = Database::getInstance();
-            $this->files = Files::getInstance();
-        }
+use Database;
+use src\utils\Files;
+
+class Repository
+{
+    protected Database $database;
+    protected Files $files;
+
+    public function __construct()
+    {
+        $this->database = Database::getInstance();
+        $this->files = Files::getInstance();
     }
+}

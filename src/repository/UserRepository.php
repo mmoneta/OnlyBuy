@@ -1,53 +1,72 @@
 <?php
-    require_once 'Repository.php';
-    require_once __DIR__.'/../models/User.php';
 
-    class UserRepository extends Repository {
-        public function createUser(string $username, ?File $avatar, string $email, string $password, int $roleId = 1): bool {
-            $uploadFile = NULL;
+namespace src\repository;
 
-            if ($avatar) {
-                $dir = $this->files->getUploadDirectory().'avatar';
+use PDO;
+use src\models\User;
 
-                if (!is_dir($dir)) {
-                    mkdir($dir, 0700);
-                }
+class UserRepository extends Repository
+{
+    public function createUser(string $username, string $email, string $password, int $roleId, $avatar): bool
+    {
+        $uploadFile = NULL;
 
-                $uploadFile = $dir.'/'
-                    .basename(date('d_m_y_h_i_s_'))
-                    .basename(str_replace(' ', '_', $avatar['name']));
-                move_uploaded_file($avatar['tmp_name'], $uploadFile);
-            } 
+        if ($avatar) {
+            $dir = $this->files->getUploadDirectory() . 'avatar';
 
-            $sql = $this->database->connection->prepare('
-                INSERT INTO public.users (username, avatar, email, password, role_id, created_date, modified_date)
-                    VALUES(:username, :avatar, :email, :password, :role_id, :created_date, :modified_date)
-            ');
-            $sql->bindParam(':username', $username, PDO::PARAM_STR);
-            $sql->bindParam(':avatar', $uploadFile, PDO::PARAM_STR);
-            $sql->bindParam(':email', $email, PDO::PARAM_STR);
-            $sql->bindParam(':password', password_hash($password, PASSWORD_DEFAULT), PDO::PARAM_STR);
-            $sql->bindParam(':role_id', $roleId, PDO::PARAM_INT);
-            $sql->bindParam(':created_date', date("Y-m-d"), PDO::PARAM_STR);
-            $sql->bindParam(':modified_date', date("Y-m-d"), PDO::PARAM_STR);
-
-            try {
-                $sql->execute();
-                return true;
+            if (!is_dir($dir)) {
+                mkdir($dir, 0700);
             }
-            catch (Exception $e) {
-                echo($avatar);
-                if ($uploadFile) {
-                    unlink($uploadFile);
-                }
 
-                return false;
-            }
+            $uploadFile = $dir . '/'
+                . basename(date('d_m_y_h_i_s_'))
+                . basename(str_replace(' ', '_', $avatar['name']));
+            move_uploaded_file($avatar['tmp_name'], $uploadFile);
         }
 
-        public function getUserDetails(string $username): ?User {
-            $user = $this->getUser($username);
+        $sql = $this->database->connection->prepare('
+                INSERT INTO users (username, avatar, email, password, role_id, created_date, modified_date)
+                    VALUES(:username, :avatar, :email, :password, :role_id, :created_date, :modified_date)
+            ');
+        $sql->bindParam(':username', $username, PDO::PARAM_STR);
+        $sql->bindParam(':avatar', $uploadFile, PDO::PARAM_STR);
+        $sql->bindParam(':email', $email, PDO::PARAM_STR);
+        $sql->bindParam(':password', password_hash($password, PASSWORD_DEFAULT), PDO::PARAM_STR);
+        $sql->bindParam(':role_id', $roleId, PDO::PARAM_INT);
+        $sql->bindParam(':created_date', date("Y-m-d"), PDO::PARAM_STR);
+        $sql->bindParam(':modified_date', date("Y-m-d"), PDO::PARAM_STR);
 
+        try {
+            $sql->execute();
+            return true;
+        } catch (Exception $e) {
+            if ($uploadFile) {
+                unlink($uploadFile);
+            }
+
+            return false;
+        }
+    }
+
+    public function getUserDetails(string $username): ?User
+    {
+        $user = $this->getUser($username);
+
+        return new User(
+            $user['avatar'],
+            $user['username'],
+            $user['email'],
+            $user['role'],
+            $user['created_date'],
+            $user['modified_date']
+        );
+    }
+
+    public function verifyUser(string $username, string $password): ?User
+    {
+        $user = $this->getUser($username);
+
+        if (password_verify($password, $user['password'])) {
             return new User(
                 $user['avatar'],
                 $user['username'],
@@ -58,65 +77,53 @@
             );
         }
 
-        public function verifyUser(string $username, string $password): ?User {
-            $user = $this->getUser($username);
+        return null;
+    }
 
-            if (password_verify($password, $user['password'])) {
-                return new User(
-                    $user['avatar'],
-                    $user['username'],
-                    $user['email'],
-                    $user['role'],
-                    $user['created_date'],
-                    $user['modified_date']
-                );
-            }
+    public function getUsers(): array
+    {
+        $sql = $this->database->connection->prepare('
+                SELECT users.avatar, users.username, users.email, roles.name as role, users.created_date, users.modified_date
+                    FROM users
+                    INNER JOIN roles ON users.role_id = roles.role_id
+            ');
+        $sql->execute();
 
+        $users = $sql->fetchAll(PDO::FETCH_ASSOC);
+
+        $output = [];
+
+        foreach ($users as $user) {
+            $output[] = new User(
+                $user['avatar'],
+                $user['username'],
+                $user['email'],
+                $user['role'],
+                $user['created_date'],
+                $user['modified_date']
+            );
+        }
+
+        return $output;
+    }
+
+    private function getUser(string $username)
+    {
+        $sql = $this->database->connection->prepare('
+                SELECT u.avatar, u.username, u.email, u.password, r.name as role, u.created_date, u.modified_date
+                    FROM users u
+                    INNER JOIN roles r ON u.role_id = r.role_id
+                    WHERE u.username = :username
+            ');
+        $sql->bindParam(':username', $username, PDO::PARAM_STR);
+        $sql->execute();
+
+        $user = $sql->fetch(PDO::FETCH_ASSOC);
+
+        if ($user == false) {
             return null;
         }
 
-        public function getUsers(): array {
-            $sql = $this->database->connection->prepare('
-                SELECT public.users.avatar, public.users.username, public.users.email, public.roles.name as role, public.users.created_date, public.users.modified_date
-                    FROM public.users
-                    INNER JOIN public.roles ON public.users.role_id = public.roles.role_id
-            ');
-            $sql->execute();
-
-            $users = $sql->fetchAll(PDO::FETCH_ASSOC);
-
-            $output = [];
-
-            foreach ($users as $user) {
-                $output[] = new User(
-                    $user['avatar'],
-                    $user['username'],
-                    $user['email'],
-                    $user['role'],
-                    $user['created_date'],
-                    $user['modified_date']
-                );
-            }
-
-            return $output;
-        }
-
-        private function getUser(string $username) {
-            $sql = $this->database->connection->prepare('
-                SELECT public.users.avatar, public.users.username, public.users.email, public.users.password, public.roles.name as role, public.users.created_date, public.users.modified_date
-                    FROM public.users
-                    INNER JOIN public.roles ON public.users.role_id = public.roles.role_id
-                    WHERE public.users.username = :username
-            ');
-            $sql->bindParam(':username', $username, PDO::PARAM_STR);
-            $sql->execute();
-
-            $user = $sql->fetch(PDO::FETCH_ASSOC);
-
-            if ($user == false) {
-                return null;
-            }
-
-            return $user;
-        }
+        return $user;
     }
+}

@@ -5,4 +5,4 @@
   </div>
 </div>
 
-<script src="<?php echo $domainLink ?>/public/js/utils/modal.js" type="text/javascript" defer></script>
+<script src="<?= $domainLink ?>/public/js/utils/modal.js" type="text/javascript" defer></script>

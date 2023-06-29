@@ -3,8 +3,8 @@
 <html lang="en">
     <head>
         <?php include 'base-head-content.php' ?>
-        <script src="<?php echo $domainLink ?>/public/js/utils/debounce.js" type="text/javascript" defer></script>
-        <script src="<?php echo $domainLink ?>/public/js/views/user-creator.js" type="text/javascript" defer></script>
+        <script src="<?= $domainLink ?>/public/js/utils/debounce.js" type="text/javascript" defer></script>
+        <script src="<?= $domainLink ?>/public/js/views/user-creator.js" type="text/javascript" defer></script>
     </head>
 
     <body>
@@ -15,7 +15,7 @@
                         <img
                             alt="Left arrow"
                             id="left-arrow"
-                            src="<?php echo $domainLink ?>/public/icons/left-arrow.svg"
+                            src="<?= $domainLink ?>/public/icons/left-arrow.svg"
                         />
                         <h1>Creator of user</h1>
                     </header>

@@ -1,8 +1,11 @@
 <?php
-    require_once 'AppController.php';
 
-    class ForgotPasswordController extends AppController {
-        public function index() {
-            $this->render('forgot-password');
-        }
+namespace src\controllers;
+
+class ForgotPasswordController extends AppController
+{
+    public function index(): void
+    {
+        $this->render('forgot-password');
     }
+}
