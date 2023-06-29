@@ -115,7 +115,7 @@ function loadProducts(search = '', active = true, promo = false) {
 
             products.forEach(product => {
                 const container = document.createElement('div');
-                container.classList.add('col-md-4');
+                container.classList.add('col-md-4', 'col-sm-6', 'col-12');
                 containers.push(container);
     
                 const parent = document.createElement('div');
@@ -161,7 +161,7 @@ function loadProducts(search = '', active = true, promo = false) {
                     });
 
                     rate.addEventListener('click', () =>
-                        request(window.location.origin + '/product/' + product.productId + '/rate', 'POST', JSON.stringify({
+                        request(window.location.origin + '/products/' + product.productId + '/rate', 'POST', JSON.stringify({
                             rate: parseInt(rate.getAttribute('data-rate'))
                         })).then(() =>
                             window.location.replace(window.location.origin)

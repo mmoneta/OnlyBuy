@@ -16,11 +16,15 @@
                 </div>
 
                 <div class="col-md-3 col-sm-4 col-6 dashboard__menu-checkboxes">
-                    <input id="active" name="active" type="checkbox" checked />
-                    <label for="active">Active</label> 
+                    <div style="flex: 1; display: flex;">
+                        <input id="active" name="active" type="checkbox" checked />
+                        <label for="active">Active</label> 
+                    </div>
 
-                    <input id="promo" name="promo" type="checkbox" />
-                    <label for="promo">Promo</label>
+                    <div style="flex: 1; display: flex;">
+                        <input id="promo" name="promo" type="checkbox" />
+                        <label for="promo">Promo</label>
+                    </div>
                 </div>
 
                 <div class="col-md-offset-2 col-md-2 col-sm-offset-1 col-sm-1 col-6" id="dashboard__dropdown">

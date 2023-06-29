@@ -36,7 +36,7 @@
 
       $urlParts = explode("/", $url);
       $action = $urlParts[0];
-      $id = $urlParts[1] ?? '';
+      $params = array_slice($urlParts, 1);
 
       $controller = self::$routes[$action];
       $object = new $controller;
@@ -47,8 +47,8 @@
       
       $action = method_exists($controller, $action) ? $action : 'index';
 
-      if ($id) {
-        $object->$action($id);
+      if ($params) {
+        $object->$action(...$params);
         return;
       }
 

@@ -5,10 +5,12 @@
 }
 
 .dashboard__menu {
-    align-items: center;
-    display: flex;
-    margin: 48px 0 !important;
-    padding: 0 108px;
+    padding: 10px;
+
+    @media (min-width: 1000px) {
+        margin: 48px 0 !important;
+        padding: 0 108px;
+    }
 }
 
 .dashboard__avatar,
@@ -42,7 +44,11 @@ label > input[type="checkbox"], input[type="search"] {
 
 input[type="search"] {
     color: var(--gray-4) !important;
-    max-width: 392px;
+
+    @media (min-width: 768px) {
+        max-width: 392px;
+    }
+    
     padding: 16px;
     width: 100%;
 }
@@ -50,7 +56,11 @@ input[type="search"] {
 .dashboard__content {
     background-color: var(--gray-1);
     flex-grow: 1;
-    padding: 56px 108px;
+    padding: 15px 0;
+
+    @media (min-width: 1000px) {
+        padding: 56px 108px;
+    }
 }
 
 #spinner {
@@ -88,6 +98,11 @@ input[type="search"] {
     display: grid;
     grid-auto-flow: column;
     grid-gap: 20px;
+    margin: 20px 0;
+    
+    @media (min-width: 768px) {
+        margin: 15px 0;
+    }
 }
 
 .dashboard__dropdown {
