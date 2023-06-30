@@ -4,7 +4,6 @@ namespace src\repository;
 
 use Exception;
 use PDO;
-use src\models\Product;
 
 class ProductRepository extends Repository
 {
@@ -18,8 +17,11 @@ class ProductRepository extends Repository
         $sql->bindParam(':description', $description, PDO::PARAM_STR);
         $sql->bindParam(':is_active', $isActive, PDO::PARAM_BOOL);
         $sql->bindParam(':is_promo', $isPromo, PDO::PARAM_BOOL);
-        $sql->bindParam(':created_date', date("Y-m-d"), PDO::PARAM_STR);
-        $sql->bindParam(':modified_date', date("Y-m-d"), PDO::PARAM_STR);
+
+        $date = date("Y-m-d");
+
+        $sql->bindParam(':created_date', $date, PDO::PARAM_STR);
+        $sql->bindParam(':modified_date', $date, PDO::PARAM_STR);
 
         try {
             $sql->execute();
@@ -65,8 +67,13 @@ class ProductRepository extends Repository
                     WHERE products.is_active = :is_active
                         AND products.is_promo = :is_promo
             ');
-        $sql->bindParam(':is_active', intval($isActive), PDO::PARAM_BOOL);
-        $sql->bindParam(':is_promo', intval($isPromo), PDO::PARAM_BOOL);
+
+        $isActive = intval($isActive);   
+        $sql->bindParam(':is_active', $isActive, PDO::PARAM_BOOL);
+
+        $isPromo = intval($isPromo);
+        $sql->bindParam(':is_promo', $isPromo, PDO::PARAM_BOOL);
+
         $sql->execute();
 
         $products = $sql->fetchAll(PDO::FETCH_ASSOC);

@@ -4,7 +4,7 @@ namespace src\controllers;
 
 class AppController
 {
-    private $request;
+    private string $request;
 
     public function __construct()
     {

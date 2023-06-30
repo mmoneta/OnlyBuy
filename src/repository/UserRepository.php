@@ -2,6 +2,7 @@
 
 namespace src\repository;
 
+use Exception;
 use PDO;
 use src\models\User;
 
@@ -31,10 +32,15 @@ class UserRepository extends Repository
         $sql->bindParam(':username', $username, PDO::PARAM_STR);
         $sql->bindParam(':avatar', $uploadFile, PDO::PARAM_STR);
         $sql->bindParam(':email', $email, PDO::PARAM_STR);
-        $sql->bindParam(':password', password_hash($password, PASSWORD_DEFAULT), PDO::PARAM_STR);
+
+        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+        $sql->bindParam(':password', $hashedPassword, PDO::PARAM_STR);
+
+        $date = date("Y-m-d");
+
         $sql->bindParam(':role_id', $roleId, PDO::PARAM_INT);
-        $sql->bindParam(':created_date', date("Y-m-d"), PDO::PARAM_STR);
-        $sql->bindParam(':modified_date', date("Y-m-d"), PDO::PARAM_STR);
+        $sql->bindParam(':created_date', $date, PDO::PARAM_STR);
+        $sql->bindParam(':modified_date', $date, PDO::PARAM_STR);
 
         try {
             $sql->execute();
@@ -111,8 +117,8 @@ class UserRepository extends Repository
     {
         $sql = $this->database->connection->prepare('
                 SELECT u.avatar, u.username, u.email, u.password, r.name as role, u.created_date, u.modified_date
-                    FROM users u
-                    INNER JOIN roles r ON u.role_id = r.role_id
+                    FROM public.users u
+                    INNER JOIN public.roles r ON u.role_id = r.role_id
                     WHERE u.username = :username
             ');
         $sql->bindParam(':username', $username, PDO::PARAM_STR);

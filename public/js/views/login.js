@@ -22,6 +22,7 @@ document.getElementById('login__action-button').addEventListener('click', () => 
             return;
         }
 
+        document.getElementById('login__action-button').disabled = false;
         alert('Incorrect data');
     });
 });

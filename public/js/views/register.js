@@ -21,6 +21,7 @@ document.getElementById('register__action-button').addEventListener('click', () 
             return;
         }
 
+        document.getElementById('register__action-button').disabled = false;
         alert('User has not been created.')
     });
 });

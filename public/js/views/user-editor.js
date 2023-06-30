@@ -41,6 +41,7 @@ document.getElementById('user-editor__action-button').addEventListener('click', 
             return;
         }
 
+        document.getElementById('user-editor__action-button').disabled = false;
         alert('User has not been created.')
     });
 });

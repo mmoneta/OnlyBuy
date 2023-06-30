@@ -17,7 +17,8 @@ class UserCreatorController extends SecurityAppController
     public function index(): void
     {
         if (isset($_SESSION['user']) && $_SESSION['user']->getRole() == 'admin') {
-            return $this->render('user-creator');
+            $this->render('user-creator');
+            return;
         }
 
         header("Location: {$this->baseUrl()}");

@@ -5,12 +5,12 @@ class Database
 {
     public PDO $connection;
 
-    private $database = DATABASE;
-    private $host = HOST;
-    private $username = USERNAME;
-    private $password = PASSWORD;
+    private string $database = DATABASE;
+    private string $host = HOST;
+    private string $username = USERNAME;
+    private string $password = PASSWORD;
 
-    private static $instance; //store the single instance of the database
+    private static $instance; // store the single instance of the database
 
     private function __construct()
     {

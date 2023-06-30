@@ -17,7 +17,8 @@ class ProductCreatorController extends SecurityAppController
     public function index()
     {
         if (isset($_SESSION['user']) && $_SESSION['user']->getRole() == 'admin') {
-            return $this->render('product-creator');
+            $this->render('product-creator');
+            return;
         }
 
         header("Location: {$this->baseUrl()}");

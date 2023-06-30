@@ -4,12 +4,12 @@ namespace src\models;
 
 class Product extends BaseModel
 {
-    public $productId;
-    public $name;
-    public $description;
-    public $isActive;
-    public $isPromo;
-    public $images;
+    public int $productId;
+    public string $name;
+    public string $description;
+    public bool $isActive;
+    public bool $isPromo;
+    public array $images;
 
     public function __construct(
         int $productId,
@@ -60,7 +60,7 @@ class Product extends BaseModel
         return $this->isPromo;
     }
 
-    public function getImages(): string
+    public function getImages(): array
     {
         return $this->images;
     }

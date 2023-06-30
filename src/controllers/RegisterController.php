@@ -17,7 +17,8 @@ class RegisterController extends SecurityAppController
     public function index(): void
     {
         if (!$_SESSION['user']) {
-            return $this->render('register');
+            $this->render('register');
+            return;
         }
 
         header("Location: {$this->baseUrl()}");

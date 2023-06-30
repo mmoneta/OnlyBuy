@@ -18,10 +18,12 @@ class UsersController extends SecurityAppController
     {
         if (isset($_SESSION['user']) && $_SESSION['user']->getRole() == 'admin') {
             if ($username) {
-                return $this->render('user-editor');
+                $this->render('user-editor');
+                return;
             }
 
-            return $this->render('users');
+            $this->render('users');
+            return;
         }
 
         header("Location: {$this->baseUrl()}");

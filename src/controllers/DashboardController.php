@@ -7,7 +7,8 @@ class DashboardController extends SecurityAppController
     public function index(): void
     {
         if ($_SESSION['user']) {
-            return $this->render('dashboard');
+            $this->render('dashboard');
+            return;
         }
 
         header("Location: {$this->baseUrl()}/login");
