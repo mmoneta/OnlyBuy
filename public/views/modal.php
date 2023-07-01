@@ -1,7 +1,14 @@
 <div class="modal" id="modal">
   <div class="modal-content">
     <span id="modal-close" class="close">&times;</span>
-    <p>Some text in the Modal..</p>
+    
+    <div>
+      <img alt="Image of product" id="modal__image" />
+
+      <h3 id="modal__title"></h3>
+
+      <p id="modal__description"></p>
+    </div>
   </div>
 </div>
 

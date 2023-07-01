@@ -178,7 +178,7 @@ function loadProducts(search = '', active = true, promo = false) {
                         if (!product.productId) {
                             return;
                         }
-                        
+
                         request(window.location.origin + '/rate', 'POST', JSON.stringify({
                             productId: product.productId,
                             value: parseInt(rate.getAttribute('data-rate'))
@@ -216,6 +216,9 @@ function loadProducts(search = '', active = true, promo = false) {
 
                 button.addEventListener('click', () => {
                     modal.style.display = "block";
+                    document.getElementById('modal__image').setAttribute('src', product.images[0]);
+                    document.getElementById('modal__title').innerText = product.name;
+                    document.getElementById('modal__description').innerText = product.description;
                 });
 
                 child.appendChild(button);
