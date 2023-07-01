@@ -24,6 +24,7 @@ class ProductsController extends SecurityAppController
         }
 
         $products = $this->productRepository->getProducts(
+            $_SESSION['user']->getUserId(),
             $_GET['search'],
             $_GET['active'] === 'true' ? true : false,
             $_GET['promo'] === 'true' ? true : false

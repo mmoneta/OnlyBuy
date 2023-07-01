@@ -178,16 +178,31 @@ function loadProducts(search = '', active = true, promo = false) {
                         request(window.location.origin + '/rate', 'POST', JSON.stringify({
                             productId: product.productId,
                             value: parseInt(rate.getAttribute('data-rate'))
-                        })).then(() => {
-                            rateContainer.setAttribute('data-rate', rate.getAttribute('data-rate'));
+                        })).then(message => {
+                            if (['CREATED', 'UPDATED'].includes(message)) {
+                                rateContainer.setAttribute('data-rate', rate.getAttribute('data-rate'));
 
-                            for (let j = 0; j <= parseInt(rate.getAttribute('data-rate')); j++) {
-                                rateContainer.querySelector('[data-rate="' + (j + 1) + '"]').src = 'public/icons/star-filled.svg';
+                                for (let j = 0; j <= parseInt(rate.getAttribute('data-rate')); j++) {
+                                    rateContainer.querySelector('[data-rate="' + (j + 1) + '"]').src = 'public/icons/star-filled.svg';
+                                }
                             }
                         })
                     );
 
                     rateContainer.appendChild(rate);
+                }
+
+                if (product && product.rate) {
+                    rateContainer.setAttribute('data-rate', product.rate);
+
+                    for (let j = 0; j < 5; j++) {
+                        if (j < product.rate) {
+                            rateContainer.querySelector('[data-rate="' + (j + 1) + '"]').src = 'public/icons/star-filled.svg';
+                            continue;
+                        }
+
+                        rateContainer.querySelector('[data-rate="' + (j + 1) + '"]').src = 'public/icons/star.svg';
+                    }
                 }
     
                 const button = document.createElement('button');

@@ -20,7 +20,7 @@ class RateController extends SecurityAppController
 
         $data = json_decode($json);
 
-        $rate = $this->rateRepository->createRate(
+        $rate = $this->rateRepository->setRate(
             $data->productId,
             $_SESSION['user']->getUserId(),
             $data->value

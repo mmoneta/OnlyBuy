@@ -63,11 +63,12 @@ class ProductRepository extends Repository
         }
     }
 
-    public function getProducts(string $search, bool $isActive, bool $isPromo): array
+    public function getProducts(int $userId, string $search, bool $isActive, bool $isPromo): array
     {
         $sql = $this->database->connection->prepare('
                 SELECT * FROM products
                     LEFT JOIN products_images ON products.product_id = products_images.product_id
+                    LEFT JOIN products_rates ON products.product_id = products_rates.product_id
                     WHERE products.is_active = :is_active
                         AND products.is_promo = :is_promo
             ');
@@ -87,6 +88,7 @@ class ProductRepository extends Repository
         foreach ($products as $product) {
             $output[$product['product_id']]['productId'] = $product['product_id'];
             $output[$product['product_id']]['name'] = $product['name'];
+            $output[$product['product_id']]['rate'] = $product['value'];
             $output[$product['product_id']]['description'] = $product['description'];
             $output[$product['product_id']]['isActive'] = $product['is_active'];
             $output[$product['product_id']]['isPromo'] = $product['is_promo'];
