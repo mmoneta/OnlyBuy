@@ -181,3 +181,7 @@ input[type="search"] {
 .dashboard__rate {
     filter: invert(0.7);
 }
+
+.dashboard__rate--filled {
+    filter: invert(12%) sepia(139%) saturate(768%) hue-rotate(363deg) brightness(299%) contrast(176%);
+}
