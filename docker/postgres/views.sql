@@ -1,4 +1,4 @@
 CREATE VIEW users_with_roles AS
-    SELECT users.avatar, users.username, users.email, roles.name as role, users.created_date, users.modified_date
-        FROM users
-        INNER JOIN roles ON users.role_id = roles.role_id
+    SELECT u.user_id, u.avatar, u.username, u.email, r.name as role, u.created_date, u.modified_date
+        FROM users u
+        INNER JOIN roles r ON u.role_id = r.role_id

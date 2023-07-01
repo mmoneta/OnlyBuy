@@ -174,7 +174,11 @@ function loadProducts(search = '', active = true, promo = false) {
                         }
                     });
 
-                    rate.addEventListener('click', () =>
+                    rate.addEventListener('click', () => {
+                        if (!product.productId) {
+                            return;
+                        }
+                        
                         request(window.location.origin + '/rate', 'POST', JSON.stringify({
                             productId: product.productId,
                             value: parseInt(rate.getAttribute('data-rate'))
@@ -187,7 +191,7 @@ function loadProducts(search = '', active = true, promo = false) {
                                 }
                             }
                         })
-                    );
+                    });
 
                     rateContainer.appendChild(rate);
                 }

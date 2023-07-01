@@ -66,11 +66,21 @@ class ProductRepository extends Repository
     public function getProducts(int $userId, string $search, bool $isActive, bool $isPromo): array
     {
         $sql = $this->database->connection->prepare('
-                SELECT * FROM products
-                    LEFT JOIN products_images ON products.product_id = products_images.product_id
-                    LEFT JOIN products_rates ON products.product_id = products_rates.product_id
-                    WHERE products.is_active = :is_active
-                        AND products.is_promo = :is_promo
+                SELECT
+                    products.product_id,
+                    products.name,
+                    products_rates.value,
+                    products.description,
+                    products.is_active,
+                    products.is_promo,
+                    products.created_date,
+                    products.modified_date,
+                    products_images.file 
+                        FROM products
+                        LEFT JOIN products_images ON products.product_id = products_images.product_id
+                        LEFT JOIN products_rates ON products.product_id = products_images.product_id
+                            WHERE products.is_active = :is_active
+                                AND products.is_promo = :is_promo
             ');
 
         $isActive = intval($isActive);   
