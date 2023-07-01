@@ -10,12 +10,16 @@ class ProductRepository extends Repository
     public function createProduct(string $name, string $description, array $images, bool $isActive, bool $isPromo): bool
     {
         $sql = $this->database->connection->prepare('
-                INSERT INTO public.products (name, description, is_active, is_promo, created_date, modified_date)
+                INSERT INTO products (name, description, is_active, is_promo, created_date, modified_date)
                     VALUES(:name, :description, :is_active, :is_promo, :created_date, :modified_date)
             ');
         $sql->bindParam(':name', $name, PDO::PARAM_STR);
         $sql->bindParam(':description', $description, PDO::PARAM_STR);
+
+        $isActive = intval($isActive); 
         $sql->bindParam(':is_active', $isActive, PDO::PARAM_BOOL);
+
+        $isPromo = intval($isPromo);
         $sql->bindParam(':is_promo', $isPromo, PDO::PARAM_BOOL);
 
         $date = date("Y-m-d");
@@ -46,7 +50,7 @@ class ProductRepository extends Repository
                 move_uploaded_file($images['tmp_name'][$i], $uploadFile);
 
                 $fileSql = $this->database->connection->prepare('
-                        INSERT INTO public.products_images (product_id, file) VALUES(:product_id, :file)
+                        INSERT INTO products_images (product_id, file) VALUES(:product_id, :file)
                     ');
                 $fileSql->bindParam(':product_id', $productId, PDO::PARAM_INT);
                 $fileSql->bindParam(':file', $uploadFile, PDO::PARAM_STR);
@@ -62,8 +66,8 @@ class ProductRepository extends Repository
     public function getProducts(string $search, bool $isActive, bool $isPromo): array
     {
         $sql = $this->database->connection->prepare('
-                SELECT * FROM public.products
-                    LEFT JOIN public.products_images ON products.product_id = products_images.product_id
+                SELECT * FROM products
+                    LEFT JOIN products_images ON products.product_id = products_images.product_id
                     WHERE products.is_active = :is_active
                         AND products.is_promo = :is_promo
             ');

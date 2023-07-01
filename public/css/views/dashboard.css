@@ -171,7 +171,11 @@ input[type="search"] {
 
 .dashboard__product > div > p {
     color: var(--gray-4);
+    display: -webkit-box;
     font-weight: 500;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
 
 .dashboard__rate {

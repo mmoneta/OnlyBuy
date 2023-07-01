@@ -59,6 +59,7 @@ class UserRepository extends Repository
         $user = $this->getUser($username);
 
         return new User(
+            $user['user_id'],
             $user['avatar'],
             $user['username'],
             $user['email'],
@@ -74,6 +75,7 @@ class UserRepository extends Repository
 
         if (password_verify($password, $user['password'])) {
             return new User(
+                $user['user_id'],
                 $user['avatar'],
                 $user['username'],
                 $user['email'],
@@ -89,9 +91,7 @@ class UserRepository extends Repository
     public function getUsers(): array
     {
         $sql = $this->database->connection->prepare('
-                SELECT users.avatar, users.username, users.email, roles.name as role, users.created_date, users.modified_date
-                    FROM users
-                    INNER JOIN roles ON users.role_id = roles.role_id
+                SELECT * FROM users_with_roles
             ');
         $sql->execute();
 
@@ -101,6 +101,7 @@ class UserRepository extends Repository
 
         foreach ($users as $user) {
             $output[] = new User(
+                $user['user_id'],
                 $user['avatar'],
                 $user['username'],
                 $user['email'],
@@ -116,9 +117,9 @@ class UserRepository extends Repository
     private function getUser(string $username)
     {
         $sql = $this->database->connection->prepare('
-                SELECT u.avatar, u.username, u.email, u.password, r.name as role, u.created_date, u.modified_date
-                    FROM public.users u
-                    INNER JOIN public.roles r ON u.role_id = r.role_id
+                SELECT u.user_id, u.avatar, u.username, u.email, u.password, r.name as role, u.created_date, u.modified_date
+                    FROM users u
+                    INNER JOIN roles r ON u.role_id = r.role_id
                     WHERE u.username = :username
             ');
         $sql->bindParam(':username', $username, PDO::PARAM_STR);

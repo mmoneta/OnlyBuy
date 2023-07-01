@@ -14,16 +14,19 @@ class ProductsController extends SecurityAppController
         $this->productRepository = new ProductRepository();
     }
 
-    public function products(int $id, string $change): void
+    public function products(): void
     {
-        if ($change === 'rate') {
+        $args = func_get_args();
+
+        if ($args && $args[1] === 'rate') {
+            print_r($args);
             return;
         }
 
         $products = $this->productRepository->getProducts(
             $_GET['search'],
-            $_GET['active'],
-            $_GET['promo']
+            $_GET['active'] === 'true' ? true : false,
+            $_GET['promo'] === 'true' ? true : false
         );
 
         http_response_code(200);

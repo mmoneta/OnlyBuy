@@ -92,6 +92,8 @@ function loadProducts(search = '', active = true, promo = false) {
     let interval;
     let value = 45;
 
+    containers.forEach(container => container.remove());
+
     if (document.getElementById('spinner')) {
         document.getElementById('spinner').style.display = 'block';
 
@@ -149,23 +151,40 @@ function loadProducts(search = '', active = true, promo = false) {
                     rate.classList.add('dashboard__rate');
 
                     rate.addEventListener('mouseover', () => {
-                        for (let j = 0; j <= i; j++) {
-                            rateContainer.querySelector('[data-rate="' + (j + 1) + '"]').src = 'public/icons/star-filled.svg';
+                        for (let j = 0; j < 5; j++) {
+                            if (j <= i) {
+                                rateContainer.querySelector('[data-rate="' + (j + 1) + '"]').src = 'public/icons/star-filled.svg';
+                                continue;
+                            }
+
+                            rateContainer.querySelector('[data-rate="' + (j + 1) + '"]').src = 'public/icons/star.svg';
                         }
                     });
 
                     rate.addEventListener('mouseout', () => {
-                        for (let j = 0; j <= i; j++) {
+                        const value = parseInt(rateContainer.getAttribute('data-rate'));
+
+                        for (let j = 0; j < 5; j++) {
+                            if (value && j < value) {
+                                rateContainer.querySelector('[data-rate="' + (j + 1) + '"]').src = 'public/icons/star-filled.svg';
+                                continue;
+                            }
+
                             rateContainer.querySelector('[data-rate="' + (j + 1) + '"]').src = 'public/icons/star.svg';
                         }
                     });
 
                     rate.addEventListener('click', () =>
-                        request(window.location.origin + '/products/' + product.productId + '/rate', 'POST', JSON.stringify({
-                            rate: parseInt(rate.getAttribute('data-rate'))
-                        })).then(() =>
-                            window.location.replace(window.location.origin)
-                        )
+                        request(window.location.origin + '/rate', 'POST', JSON.stringify({
+                            productId: product.productId,
+                            value: parseInt(rate.getAttribute('data-rate'))
+                        })).then(() => {
+                            rateContainer.setAttribute('data-rate', rate.getAttribute('data-rate'));
+
+                            for (let j = 0; j <= parseInt(rate.getAttribute('data-rate')); j++) {
+                                rateContainer.querySelector('[data-rate="' + (j + 1) + '"]').src = 'public/icons/star-filled.svg';
+                            }
+                        })
                     );
 
                     rateContainer.appendChild(rate);

@@ -9,7 +9,10 @@ class User extends BaseModel
     public string $email;
     public string $role;
 
+    private int $userId;
+
     public function __construct(
+        int $userId,
         ?string $avatar,
         string $username,
         string $email,
@@ -18,10 +21,16 @@ class User extends BaseModel
         string $modifiedDate
     ) {
         parent::__construct($createdDate, $modifiedDate);
+        $this->userId = $userId;
         $this->avatar = $avatar;
         $this->username = $username;
         $this->email = $email;
         $this->role = $role;
+    }
+
+    public function getUserId(): int
+    {
+        return $this->userId;
     }
 
     public function getAvatar(): string

@@ -31,13 +31,17 @@ class ProductCreatorController extends SecurityAppController
             return;
         }
 
-        $isProductCreated = $this->productRepository->createProduct(
-            $_POST['name'],
-            $_POST['description'],
-            $_FILES['images'],
-            $_POST['isActive'] === 'true' ? true : false,
-            $_POST['isPromo'] === 'true' ? true : false
-        );
+        try {
+            $isProductCreated = $this->productRepository->createProduct(
+                $_POST['name'],
+                $_POST['description'],
+                $_FILES['images'],
+                $_POST['isActive'] === 'true' ? true : false,
+                $_POST['isPromo'] === 'true' ? true : false
+            );
+        } catch (Throwable $e) {
+            var_dump($e);
+        }  
 
         http_response_code(200);
         echo json_encode($isProductCreated);

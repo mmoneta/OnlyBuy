@@ -39,7 +39,7 @@ class Router
 
     $action = method_exists($controller, $action) ? $action : 'index';
 
-    if ($params) {
+    if (count($params)) {
       $object->$action(...$params);
       return;
     }
