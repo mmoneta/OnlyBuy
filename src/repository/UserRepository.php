@@ -90,9 +90,7 @@ class UserRepository extends Repository
 
     public function getUsers(): array
     {
-        $sql = $this->database->connection->prepare('
-                SELECT * FROM users_with_roles
-            ');
+        $sql = $this->database->connection->prepare('SELECT * FROM users_with_roles');
         $sql->execute();
 
         $users = $sql->fetchAll(PDO::FETCH_ASSOC);
