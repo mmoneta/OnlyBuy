@@ -1,1 +1,1 @@
-<img id="spinner" src="public/icons/spinner.svg" alt="Spinner">
+<img id="spinner" src="<?= $domainLink ?>/public/icons/spinner.svg" alt="Spinner">

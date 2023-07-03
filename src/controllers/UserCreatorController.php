@@ -26,15 +26,37 @@ class UserCreatorController extends SecurityAppController
 
     public function user(): void
     {
-        $isUserCreated = $this->userRepository->createUser(
-            $_POST['username'],
-            $_POST['email'],
-            $_POST['password'],
-            $_POST['roleId'],
-            $_FILES['avatar']
-        );
+        if ($this->isPost()) {
+            $isUserCreated = $this->userRepository->createUser(
+                $_POST['username'],
+                $_POST['email'],
+                $_POST['password'],
+                $_POST['roleId'],
+                $_FILES['avatar']
+            );
+    
+            http_response_code(200);
+            echo json_encode($isUserCreated);
+            return;
+        }
 
-        http_response_code(200);
-        echo json_encode($isUserCreated);
+        if ($this->isPut()) {
+            $json = file_get_contents('php://input');
+
+            $data = json_decode($json);
+
+            if ($data->password) {
+                $updatedUser = $this->userRepository->updatePassword($data->username, $data->password);
+                http_response_code(200);
+                echo json_encode($updatedUser);
+                return;
+            }
+
+            if ($data->roleId) {
+                $updatedUser = $this->userRepository->updateRole($data->username, intval($data->roleId));
+                http_response_code(200);
+                echo json_encode($updatedUser);
+            }
+        }
     }
 }

@@ -2,10 +2,10 @@ include('public/js/utils/date.js');
 include('public/js/utils/request.js');
 include('public/js/utils/table.js');
 
-window.addEventListener('load', () => {
-    let interval;
-    let value = 45;
+let interval;
+let value = 45;
 
+window.addEventListener('load', () => {
     if (document.getElementById('spinner')) {
         document.getElementById('spinner').style.display = 'block';
 
@@ -15,6 +15,10 @@ window.addEventListener('load', () => {
         }, 100);
     }
 
+    getUsers();
+});
+
+function getUsers() {
     request(window.location.origin + '/users', 'GET').then(users => {
         users.forEach(user => {
             const row = document.createElement('tr');
@@ -45,4 +49,4 @@ window.addEventListener('load', () => {
 
         document.getElementById('users__table').style.display = 'table';
     });
-});
+}

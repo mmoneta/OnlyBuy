@@ -3,6 +3,7 @@
 <html lang="en">
     <head>
         <?php include 'base-head-content.php' ?>
+        <script src="<?= $domainLink ?>/public/js/utils/spinner.js" type="text/javascript" defer></script>
         <script src="<?= $domainLink ?>/public/js/views/users.js" type="text/javascript" defer></script>
     </head>
 
@@ -29,8 +30,8 @@
                     </table>
                 </div>
             </div>
-        </div>
 
-        <?php include 'spinner.php' ?>
+            <?php include 'spinner.php' ?>
+        </div>
     </body>
 </html>

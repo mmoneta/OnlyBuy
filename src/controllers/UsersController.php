@@ -29,8 +29,10 @@ class UsersController extends SecurityAppController
         header("Location: {$this->baseUrl()}");
     }
 
-    public function users(string $username = ''): void
+    public function users(): void
     {
+        $username = func_get_args() ? func_get_args()[0] : '';
+        
         if ($this->isAjax() && !$username) {
             $users = $this->userRepository->getUsers();
 

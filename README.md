@@ -29,4 +29,4 @@ Platforma umożliwia przeglądanie produktów różnych marek dostępnych na ryn
 
 ## Diagram ERD
 
-![Diagram ERD](./docs/public.png)
+![Diagram ERD](./docs/erd.png)

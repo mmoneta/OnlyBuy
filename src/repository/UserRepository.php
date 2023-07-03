@@ -113,6 +113,38 @@ class UserRepository extends Repository
         return $output;
     }
 
+    public function updatePassword(string $username, string $password)
+    {
+        $sql = $this->database->connection->prepare('
+                UPDATE users
+                SET password = :password
+                WHERE username = :username
+            ');
+        $sql->bindParam(':username', $username, PDO::PARAM_STR);
+
+        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+        $sql->bindParam(':password', $hashedPassword, PDO::PARAM_STR);
+
+        $sql->execute();
+
+        return true;
+    }
+
+    public function updateRole(string $username, int $roleId)
+    {
+        $sql = $this->database->connection->prepare('
+                UPDATE users
+                SET role_id = :role_id
+                WHERE username = :username
+            ');
+        $sql->bindParam(':username', $username, PDO::PARAM_STR);
+        $sql->bindParam(':role_id', $roleId, PDO::PARAM_INT);
+
+        $sql->execute();
+
+        return true;
+    }
+
     private function getUser(string $username)
     {
         $sql = $this->database->connection->prepare('

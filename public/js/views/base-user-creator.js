@@ -3,11 +3,13 @@ include('public/js/utils/files.js');
 const controlNames = ['username', 'email', 'password', 'repeat-password'];
 
 function changeDisabledStatus() {
-    document.getElementById(window.actionButtonName).disabled =
-        controlNames
-            .map(controlName => document.getElementById(controlName).validity.valid)
-            .some(valid => !valid)
-        || document.getElementById('password').value !== document.getElementById('repeat-password').value;
+    if (document.getElementById(window.actionButtonName)) {
+        document.getElementById(window.actionButtonName).disabled =
+            controlNames
+                .map(controlName => document.getElementById(controlName).validity.valid)
+                .some(valid => !valid)
+            || document.getElementById('password').value !== document.getElementById('repeat-password').value;
+    }
 }
 
 function getFormData() {
@@ -33,7 +35,5 @@ function loadRoles() {
         });
     });
 }
-
-document.getElementById('avatar').addEventListener('change', () => handleUpload('avatar'));
 
 handleControlsEvent(controlNames, 'keydown', debounce(() => changeDisabledStatus(), 1000));

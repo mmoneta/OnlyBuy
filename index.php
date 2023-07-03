@@ -26,5 +26,6 @@ Router::post('register', 'src\\controllers\\RegisterController');
 Router::post('product-creator', 'src\\controllers\\ProductCreatorController');
 Router::post('rate', 'src\\controllers\\RateController');
 Router::post('user', 'src\\controllers\\UserCreatorController');
+Router::post('user-editor', 'src\\controllers\\UserCreatorController');
 
 Router::run($path);

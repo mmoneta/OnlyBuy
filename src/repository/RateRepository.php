@@ -25,10 +25,10 @@ class RateRepository extends Repository
             if ($e->getCode() === '23505') {
                 try {
                     $sql = $this->database->connection->prepare('
-                    UPDATE products_rates
-                        SET value = :value
-                        WHERE product_id = :product_id
-                            AND user_id = :user_id
+                        UPDATE products_rates
+                            SET value = :value
+                            WHERE product_id = :product_id
+                                AND user_id = :user_id
                     ');
                     $sql->bindParam(':product_id', $productId, PDO::PARAM_INT);
                     $sql->bindParam(':user_id', $userId, PDO::PARAM_INT);
