@@ -63,13 +63,6 @@ input[type="search"] {
     }
 }
 
-#spinner {
-    height: 50px;
-    left: 50%;
-    position: absolute;
-    top: 55%;
-}
-
 .dashboard__content-empty {
     align-items: center;
     background: var(--white);
@@ -143,7 +136,7 @@ input[type="search"] {
     background-color: var(--white);
     display: flex;
     flex-direction: column;
-    height: 400px;
+    height: 410px;
     margin-bottom: 32px;
     padding: 0;
 }
@@ -165,6 +158,18 @@ input[type="search"] {
     padding: 15px;
 }
 
+.dashboard__product-image {
+    position: relative;
+}
+
+.dashboard__promo {
+    background: var(--orange);
+    color: var(--white);
+    left: 0;
+    padding: 3px 15px;
+    position: absolute;
+}
+
 .dashboard__product > div > h4 {
     font-weight: 700;
 }
@@ -176,6 +181,10 @@ input[type="search"] {
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
+}
+
+.dashboard__rate-container {
+    margin-bottom: 8px;
 }
 
 .dashboard__rate {

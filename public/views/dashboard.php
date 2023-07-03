@@ -41,7 +41,7 @@
                 </div>
             </div>
 
-            <img id="spinner" src="public/icons/spinner.svg" alt="Spinner">
+            <?php include 'spinner.php' ?>
         </div>
 
         <?php include 'modal.php' ?>

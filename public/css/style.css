@@ -44,3 +44,10 @@ header > img {
 .w-100 {
     width: 100%;
 }
+
+#spinner {
+    height: 50px;
+    left: 50%;
+    position: absolute;
+    top: 55%;
+}

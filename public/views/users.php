@@ -17,7 +17,7 @@
                 </div>
                    
                 <div class="col-md-12 col-sm-12 col-12">
-                    <table id="users__table">
+                    <table id="users__table" style="display: none;">
                         <tr>
                             <th>Username</th>
                             <th>E-mail</th>
@@ -30,5 +30,7 @@
                 </div>
             </div>
         </div>
+
+        <?php include 'spinner.php' ?>
     </body>
 </html>

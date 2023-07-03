@@ -1,0 +1,1 @@
+<img id="spinner" src="public/icons/spinner.svg" alt="Spinner">

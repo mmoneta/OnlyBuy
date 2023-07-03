@@ -46,6 +46,7 @@ class UserRepository extends Repository
             $sql->execute();
             return true;
         } catch (Exception $e) {
+            var_dump($e);
             if ($uploadFile) {
                 unlink($uploadFile);
             }

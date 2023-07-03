@@ -168,8 +168,8 @@ ALTER SEQUENCE users_user_id_seq OWNED BY users.user_id;
 ALTER TABLE ONLY users ALTER COLUMN user_id SET DEFAULT nextval('users_user_id_seq'::regclass);
 
 
-INSERT INTO users (user_id, username, avatar, email, password, role_id, created_date, modified_date) VALUES (1, 'admin', NULL, 'admin@only-buy.com', '$2y$10$CCz2LXxnAhJB0yEfMGdxluqyuC20.G98DMLn9whWtyLUnlnT9s9aO', 2, '2023-06-05', '2023-06-05');
-INSERT INTO users (user_id, username, avatar, email, password, role_id, created_date, modified_date) VALUES (2, 'only-buy', NULL, 'only-buy@only-buy.com', '$2y$10$CCz2LXxnAhJB0yEfMGdxluqyuC20.G98DMLn9whWtyLUnlnT9s9aO', 1, '2023-06-05', '2023-06-05');
+INSERT INTO users (username, avatar, email, password, role_id, created_date, modified_date) VALUES ('admin', NULL, 'admin@only-buy.com', '$2y$10$CCz2LXxnAhJB0yEfMGdxluqyuC20.G98DMLn9whWtyLUnlnT9s9aO', 2, '2023-06-05', '2023-06-05');
+INSERT INTO users (username, avatar, email, password, role_id, created_date, modified_date) VALUES ('only-buy', NULL, 'only-buy@only-buy.com', '$2y$10$CCz2LXxnAhJB0yEfMGdxluqyuC20.G98DMLn9whWtyLUnlnT9s9aO', 1, '2023-06-05', '2023-06-05');
 
 /* FOREIGN KEYS - USERS */
 ALTER TABLE users

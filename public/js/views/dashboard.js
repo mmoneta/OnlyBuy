@@ -44,6 +44,22 @@ function getAvatar(user) {
     return blankAvatar;
 }
 
+function getActionButton(product) {
+    const button = document.createElement('button');
+
+    button.classList.add('btn', 'btn-primary', 'w-100', 'dashboard__product-button');
+    button.setAttribute('type', 'button');
+
+    if (product.isActive) {
+        button.innerText = 'Show details';
+        return button;
+    }
+
+    button.innerText = 'Unavailable';
+    button.disabled = true;
+    return button;
+}
+
 function loadUser() {
     request(window.location.origin + '/session/user', 'GET', null, {}).then(user => {
         const dropdownContainer = document.getElementById('dashboard__dropdown');
@@ -123,12 +139,23 @@ function loadProducts(search = '', active = true, promo = false) {
                 const parent = document.createElement('div');
                 parent.classList.add('col-md-12', 'dashboard__product');
                 container.appendChild(parent);
+
+                const productImageContainer = document.createElement('div');
+                productImageContainer.classList.add('dashboard__product-image');
+                parent.appendChild(productImageContainer);
+
+                if (product.isPromo) {
+                    const promo = document.createElement('div');
+                    promo.classList.add('dashboard__promo');
+                    promo.innerText = 'Promo';
+                    productImageContainer.appendChild(promo);
+                }
     
                 const img = document.createElement('img');
                 img.setAttribute('src', product.images[0]);
                 img.setAttribute('alt', 'Image of ' + product.name);
                 img.classList.add('w-100');
-                parent.appendChild(img);
+                productImageContainer.appendChild(img);
     
                 const child = document.createElement('div');
                 parent.appendChild(child);
@@ -143,11 +170,13 @@ function loadProducts(search = '', active = true, promo = false) {
 
                 const rateContainer = document.createElement('div');
                 child.appendChild(rateContainer);
+                rateContainer.classList.add('dashboard__rate-container');
 
                 for (let i = 0; i < 5; i++) {
                     const rate = document.createElement('img');
                     rate.setAttribute('data-rate', i + 1);
                     rate.src = 'public/icons/star.svg';
+                    rate.role = 'button';
                     rate.classList.add('dashboard__rate');
 
                     rate.addEventListener('mouseover', () => {
@@ -215,10 +244,7 @@ function loadProducts(search = '', active = true, promo = false) {
                     }
                 }
     
-                const button = document.createElement('button');
-                button.innerText = 'Show details';
-                button.classList.add('btn', 'btn-primary', 'w-100', 'dashboard__product-button');
-                button.setAttribute('type', 'button');
+                const button = getActionButton(product);
 
                 button.addEventListener('click', () => {
                     modal.style.display = "block";

@@ -28,10 +28,10 @@ class UserCreatorController extends SecurityAppController
     {
         $isUserCreated = $this->userRepository->createUser(
             $_POST['username'],
-            $_FILES['avatar'],
             $_POST['email'],
             $_POST['password'],
-            $_POST['roleId']
+            $_POST['roleId'],
+            $_FILES['avatar']
         );
 
         http_response_code(200);
