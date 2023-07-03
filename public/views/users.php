@@ -16,7 +16,7 @@
                     </header>
                 </div>
                    
-                <div class="col-md-12 col-sm-12 col-12">
+                <div class="col-md-12 col-sm-12 col-12 responsive-table-container">
                     <table id="users__table" style="display: none;">
                         <tr>
                             <th>Username</th>

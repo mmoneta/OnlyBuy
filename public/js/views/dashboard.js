@@ -112,6 +112,7 @@ function loadProducts(search = '', active = true, promo = false) {
 
     if (document.getElementById('spinner')) {
         document.getElementById('spinner').style.display = 'block';
+        document.querySelector('.dashboard__content-empty').style.display = 'none';
 
         interval = setInterval(() => {
             document.getElementById('spinner').style.transform = 'rotate(' + value + 'deg)';
